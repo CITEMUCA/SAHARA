@@ -32,7 +32,11 @@ fs.mkdirSync(UPLOAD_DIR, { recursive: true });
 /* ------------------------------------------------------------------ */
 /* Base de données                                                     */
 /* ------------------------------------------------------------------ */
-const DATABASE_URL = process.env.DATABASE_URL || "postgresql://postgres:postgres@127.0.0.1:5432/sic2026";
+const DATABASE_URL = process.env.DATABASE_URL || "";
+if (!DATABASE_URL) {
+  console.error("DATABASE_URL manquant. Sur Railway : ajoutez PostgreSQL et liez DATABASE_URL au service web.");
+  process.exit(1);
+}
 const pool = new Pool({
   connectionString: DATABASE_URL,
   ssl: process.env.PGSSL === "disable" ? false : DATABASE_URL.includes("localhost") || DATABASE_URL.includes("127.0.0.1") ? false : { rejectUnauthorized: false },
