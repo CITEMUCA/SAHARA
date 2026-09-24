@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Espace organisateurs | Moroccan Sahara Innovation Challenge 2026</title>
+  <link rel="icon" href="/assets/brand/logo-sic.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/brand/logo-sic.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="/css/admin.css?v=export1">
+</head>
+<body>
+  <section class="login" id="login">
+    <form class="login__card" id="loginForm">
+      <img src="/assets/brand/logo-sic.png" alt="" width="72" height="72">
+      <h1>Espace organisateurs</h1>
+      <p>Moroccan Sahara Innovation Challenge 2026</p>
+      <label for="password">Mot de passe</label>
+      <input id="password" type="password" autocomplete="current-password" required>
+      <p class="login__error" id="loginError" hidden>Mot de passe incorrect.</p>
+      <button class="btn btn--primary" type="submit"><i class="fa-solid fa-right-to-bracket"></i> Se connecter</button>
+      <a href="/" class="login__back"><i class="fa-solid fa-arrow-left"></i> Retour au site</a>
+    </form>
+  </section>
+
+  <div class="app" id="app" hidden>
+    <aside class="side">
+      <a class="side__brand" href="/">
+        <img src="/assets/brand/logo-sic.png" alt="" width="40" height="40">
+        <span><strong>Moroccan Sahara</strong><small>Innovation Challenge</small></span>
+      </a>
+      <nav class="side__nav">
+        <button class="is-active" data-view="dashboard"><i class="fa-solid fa-chart-pie"></i> Tableau de bord</button>
+        <button data-view="registrations"><i class="fa-solid fa-users"></i> Candidatures <span class="count" id="countReg">0</span></button>
+        <button data-view="exports"><i class="fa-solid fa-file-excel"></i> Exports Excel</button>
+      </nav>
+      <div class="side__foot">
+        <button class="btn btn--ghost btn--block" id="exportAllBtn"><i class="fa-solid fa-file-excel"></i> Tout exporter (.xlsx)</button>
+        <button class="btn btn--link" id="logoutBtn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Déconnexion</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section class="view is-active" data-view="dashboard">
+        <header class="main__head">
+          <div>
+            <h1>Tableau de bord</h1>
+            <p>Suivi des candidatures</p>
+          </div>
+          <button class="btn btn--outline" data-refresh><i class="fa-solid fa-rotate"></i> Actualiser</button>
+        </header>
+        <div class="kpis">
+          <div class="kpi"><i class="fa-solid fa-folder-open"></i><div><strong id="kTotal">0</strong><span>Candidatures</span></div></div>
+          <div class="kpi"><i class="fa-solid fa-people-group"></i><div><strong id="kPeople">0</strong><span>Participants</span></div></div>
+          <div class="kpi"><i class="fa-solid fa-route"></i><div><strong id="kTracks">3</strong><span>Parcours</span></div></div>
+          <div class="kpi"><i class="fa-solid fa-layer-group"></i><div><strong id="kCh">6</strong><span>Thématiques</span></div></div>
+        </div>
+        <div class="charts">
+          <div class="panel"><h2>Par parcours</h2><div class="bars" id="chartTrack"></div></div>
+          <div class="panel"><h2>Par statut</h2><div class="bars" id="chartStatus"></div></div>
+          <div class="panel panel--wide"><h2>Par challenge</h2><div class="bars" id="chartChallenge"></div></div>
+          <div class="panel panel--wide"><h2>Candidatures par jour</h2><div class="spark" id="chartDay"></div></div>
+        </div>
+      </section>
+
+      <section class="view" data-view="registrations">
+        <header class="main__head">
+          <div>
+            <h1>Candidatures</h1>
+            <p><span id="resultCount">0</span> résultat(s)</p>
+          </div>
+          <button class="btn btn--outline" data-refresh><i class="fa-solid fa-rotate"></i> Actualiser</button>
+        </header>
+        <div class="filters">
+          <div class="search"><i class="fa-solid fa-magnifying-glass"></i><input id="fQ" type="search" placeholder="Référence, titre, porteur, email, établissement…"></div>
+          <select id="fTrack"><option value="">Tous les parcours</option><option value="idea">IDEA</option><option value="lab">LAB</option><option value="scale">SCALE</option></select>
+          <select id="fChallenge"><option value="">Tous les challenges</option></select>
+          <select id="fStatus"><option value="">Tous les statuts</option></select>
+        </div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr><th>Réf.</th><th>Date</th><th>Projet</th><th>Porteur</th><th>Établissement</th><th>Parcours</th><th>Challenge</th><th>Équipe</th><th>Statut</th></tr>
+            </thead>
+            <tbody id="regBody"></tbody>
+          </table>
+          <p class="empty" id="regEmpty" hidden><i class="fa-regular fa-folder-open"></i> Aucune candidature pour ces critères.</p>
+        </div>
+      </section>
+
+      <section class="view" data-view="exports">
+        <header class="main__head">
+          <div>
+            <h1>Exports Excel</h1>
+            <p>Fichiers .xlsx mis en forme (couleurs, filtres, établissements). Ouvrez directement dans Excel.</p>
+          </div>
+        </header>
+        <div class="panel">
+          <h2>Export complet</h2>
+          <p class="muted-empty" style="margin:0 0 14px">Un classeur avec une feuille « Toutes », une feuille par parcours (IDEA / LAB / SCALE) et une feuille par challenge (C1 à C6).</p>
+          <button type="button" class="btn btn--primary" data-export="all"><i class="fa-solid fa-file-excel"></i> Télécharger le classeur complet</button>
+        </div>
+        <div class="panel" style="margin-top:18px">
+          <h2>Par parcours</h2>
+          <div class="export-grid" id="exportTracks"></div>
+        </div>
+        <div class="panel" style="margin-top:18px">
+          <h2>Par thématique (challenge)</h2>
+          <div class="export-grid" id="exportChallenges"></div>
+        </div>
+        <div class="panel" style="margin-top:18px">
+          <h2>Parcours × thématique</h2>
+          <p class="muted-empty" style="margin:0 0 14px">Un fichier par combinaison (IDEA + challenge 1, etc.).</p>
+          <div class="export-grid export-grid--dense" id="exportMatrix"></div>
+        </div>
+      </section>
+
+      <section class="view" data-view="candidature" id="candidatureView"></section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="/js/admin.js?v=xlsx1"></script>
+</body>
+</html>

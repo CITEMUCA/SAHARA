@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Espace jury | Moroccan Sahara Innovation Challenge 2026</title>
+  <link rel="icon" href="/assets/brand/logo-sic.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+  <section class="login" id="login">
+    <form class="login__card" id="loginForm">
+      <img src="/assets/brand/logo-sic.png" alt="" width="72" height="72">
+      <h1>Espace jury</h1>
+      <p>Moroccan Sahara Innovation Challenge 2026</p>
+      <label for="email">Email</label>
+      <input id="email" type="email" autocomplete="username" required>
+      <label for="password">Mot de passe</label>
+      <input id="password" type="password" autocomplete="current-password" required>
+      <p class="login__error" id="loginError" hidden>Email ou mot de passe incorrect.</p>
+      <button class="btn btn--primary" type="submit"><i class="fa-solid fa-right-to-bracket"></i> Se connecter</button>
+      <a href="/admin" class="login__back">Espace organisateurs</a>
+    </form>
+  </section>
+
+  <div class="app" id="app" hidden>
+    <aside class="side">
+      <a class="side__brand" href="/">
+        <img src="/assets/brand/logo-sic.png" alt="" width="40" height="40">
+        <span><strong>Moroccan Sahara</strong><small>Innovation Challenge</small></span>
+      </a>
+      <p class="jury-who" id="juryWho"></p>
+      <div class="side__foot">
+        <button class="btn btn--link" id="logoutBtn" type="button"><i class="fa-solid fa-arrow-right-from-bracket"></i> Déconnexion</button>
+      </div>
+    </aside>
+    <main class="main">
+      <section id="listView">
+        <header class="main__head">
+          <div>
+            <h1>Projets à noter</h1>
+            <p id="listIntro"></p>
+          </div>
+        </header>
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr><th>Projet</th><th>Porteur</th><th>Établissement</th><th>Challenge</th><th>Ma note</th><th>Moyenne</th></tr>
+            </thead>
+            <tbody id="body"></tbody>
+          </table>
+          <p class="empty" id="empty" hidden>Aucun projet dans votre parcours pour le moment.</p>
+        </div>
+      </section>
+      <section id="pageView" hidden></section>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="/js/jury.js"></script>
+</body>
+</html>

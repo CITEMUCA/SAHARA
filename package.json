@@ -1,0 +1,23 @@
+{
+  "name": "sahara-innovation-challenge-2026",
+  "version": "1.0.0",
+  "description": "Site officiel et plateforme de candidature du Sahara Innovation Challenge 2026, Cité de l'Innovation, Université Cadi Ayyad",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "build:map": "python tools/build_map.py"
+  },
+  "engines": {
+    "node": ">=22.13"
+  },
+  "license": "UNLICENSED",
+  "type": "commonjs",
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "express": "^4.22.3",
+    "multer": "^2.4.0",
+    "pg": "^8.23.0"
+  }
+}

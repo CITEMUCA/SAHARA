@@ -1,0 +1,9 @@
+node_modules/
+data/
+.env
+*.log
+tools/_*
+tools/_pdfprev/
+*.pdf
+.DS_Store
+Thumbs.db

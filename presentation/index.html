@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moroccan Sahara Innovation Challenge 2026 — Présentation</title>
+  <meta name="description" content="Présentation officielle du Moroccan Sahara Innovation Challenge 2026.">
+  <link rel="icon" href="../public/assets/brand/logo-sic.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root {
+      --cream:#F6F0E4; --cream2:#EFE4D0; --ink:#1A2820; --ink2:#2D3B33;
+      --muted:#6B6050; --gold:#A8762E; --gold2:#C9982A; --gold3:#F0C060;
+      --copper:#B8652F; --red:#B4232A; --green:#1B6B3A; --ocean:#0E6FA8;
+      --s1:#1A2820; --s2:#2E4A37; --s3:#1C3148; --s4:#3B2410; --s6:#0D2E1E;
+      --zel:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23A8762E' stroke-opacity='.13' stroke-width='1'%3E%3Crect x='20' y='20' width='40' height='40'/%3E%3Crect x='20' y='20' width='40' height='40' transform='rotate(45 40 40)'/%3E%3Ccircle cx='40' cy='40' r='10'/%3E%3Ccircle cx='40' cy='40' r='20'/%3E%3Cpath d='M0 0L16 16M80 0L64 16M0 80L16 64M80 80L64 64'/%3E%3Cpath d='M40 0V80M0 40H80'/%3E%3C/g%3E%3C/svg%3E");
+      --zel-l:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23F0C060' stroke-opacity='.09' stroke-width='1'%3E%3Crect x='20' y='20' width='40' height='40'/%3E%3Crect x='20' y='20' width='40' height='40' transform='rotate(45 40 40)'/%3E%3Ccircle cx='40' cy='40' r='10'/%3E%3Ccircle cx='40' cy='40' r='20'/%3E%3Cpath d='M0 0L16 16M80 0L64 16M0 80L16 64M80 80L64 64'/%3E%3Cpath d='M40 0V80M0 40H80'/%3E%3C/g%3E%3C/svg%3E");
+      --fd:'Sora',system-ui,sans-serif; --fs:'Instrument Serif',Georgia,serif;
+      --fb:'Inter',system-ui,sans-serif; --ease:cubic-bezier(.22,1,.36,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fb);background:#0a0a0a}
+    #deck{width:1280px;height:720px;position:absolute;top:50%;left:50%;transform-origin:center center}
+    .slide{position:absolute;inset:0;width:1280px;height:720px;overflow:hidden;opacity:0;pointer-events:none;transition:opacity .5s var(--ease),transform .5s var(--ease);transform:translateX(50px)}
+    .slide.active{opacity:1;pointer-events:auto;transform:translateX(0)}
+    .slide.leaving{opacity:0;transform:translateX(-50px)}
+    .bg{position:absolute;inset:0;z-index:0}
+    .bg::after{content:'';position:absolute;inset:0;background:var(--zel);opacity:.45}
+    .bg.dark::after{background:var(--zel-l);opacity:.35}
+    .inner{position:relative;z-index:5;width:100%;height:100%;display:flex;flex-direction:column}
+    .flag{position:absolute;left:0;right:0;height:6px;z-index:20;background:linear-gradient(180deg,var(--red) 50%,var(--green) 50%)}
+    .flag.top{top:0} .flag.bot{bottom:0}
+    .snum{position:absolute;top:14px;right:48px;font-family:var(--fd);font-size:11px;font-weight:700;color:var(--muted);opacity:.7;z-index:10}
+    .snum.l{color:rgba(255,255,255,.35)}
+    /* frame title */
+    .ft{display:flex;align-items:center;padding:14px 48px 0;gap:14px}
+    .ft span{font-family:var(--fd);font-size:22px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+    .ft.d span{color:var(--cream)} .ft hr{flex:1;height:2px;border:0;background:linear-gradient(90deg,var(--gold2),transparent)}
+    .ft.d hr{background:linear-gradient(90deg,rgba(240,192,96,.4),transparent)}
+    .ft small{font-family:var(--fd);font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);opacity:.7}
+    .ft.d small{color:rgba(255,255,255,.3)}
+    .fc{flex:1;padding:18px 48px 14px;display:flex;flex-direction:column;gap:14px}
+    /* cards */
+    .cards{display:flex;gap:16px;flex:1}
+    .card{flex:1;background:var(--cream2);border-radius:12px;padding:18px 20px;border:1px solid rgba(168,118,46,.18);position:relative;overflow:hidden}
+    .card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold2),var(--copper));border-radius:12px 12px 0 0}
+    .cl{font-family:var(--fd);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+    .ct{font-size:13.5px;line-height:1.6;color:var(--ink2)}
+    .card.dk{background:rgba(0,0,0,.35);border-color:rgba(240,192,96,.18)}
+    .card.dk .cl{color:var(--gold3)} .card.dk .ct{color:rgba(246,240,228,.85)}
+    .card.dk::before{background:linear-gradient(90deg,var(--gold3),var(--copper))}
+    /* challenge grid */
+    .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;flex:1}
+    .ci{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border-radius:10px;background:var(--cream2);border:1px solid rgba(168,118,46,.15)}
+    .cn{font-family:var(--fd);font-size:26px;font-weight:800;line-height:1;min-width:42px}
+    .cn.g{color:var(--gold2)} .cn.r{color:var(--red)}
+    .cb h4{font-family:var(--fd);font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px}
+    .cb p{font-size:12px;color:var(--muted);line-height:1.5}
+    .cico{margin-left:auto;font-size:20px;opacity:.3}
+    /* photo strip */
+    .pstrip{display:flex;gap:10px}
+    .pstrip img{flex:1;height:170px;object-fit:cover;border-radius:10px}
+    /* stats */
+    .stats{display:flex;gap:12px}
+    .stat{flex:1;background:rgba(240,192,96,.12);border:1px solid rgba(240,192,96,.25);border-radius:10px;padding:14px 16px;text-align:center}
+    .stn{font-family:var(--fd);font-size:30px;font-weight:800;color:var(--gold3);line-height:1}
+    .stl{font-size:11.5px;color:rgba(246,240,228,.7);margin-top:4px;letter-spacing:.04em}
+    /* timeline */
+    .tl{display:flex;flex:1}
+    .ts{flex:1;position:relative;padding:0 12px}
+    .ts:not(:last-child)::after{content:'';position:absolute;top:22px;right:0;width:1px;height:calc(100% - 22px);background:linear-gradient(180deg,var(--gold2),transparent)}
+    .td{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold2),var(--copper));display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:800;font-size:14px;color:var(--cream);margin-bottom:10px}
+    .tdate{font-family:var(--fd);font-size:12px;font-weight:700;color:var(--gold3);letter-spacing:.06em;margin-bottom:5px}
+    .ttitle{font-family:var(--fd);font-size:14px;font-weight:700;color:var(--cream);margin-bottom:6px}
+    .ttext{font-size:12px;color:rgba(246,240,228,.75);line-height:1.55}
+    /* prizes */
+    .prizes{display:flex;gap:14px;flex:1}
+    .prize{flex:1;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;border:1px solid rgba(240,192,96,.2)}
+    .ph{padding:16px 18px;background:linear-gradient(135deg,rgba(168,118,46,.4),rgba(168,118,46,.15));border-bottom:1px solid rgba(240,192,96,.18)}
+    .ptag{font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--gold3);text-transform:uppercase;margin-bottom:4px}
+    .pname{font-family:var(--fd);font-size:18px;font-weight:800;color:var(--cream)}
+    .psub{font-size:12px;color:rgba(246,240,228,.65);margin-top:3px}
+    .pb{padding:14px 18px;flex:1;background:rgba(0,0,0,.25);font-size:12.5px;color:rgba(246,240,228,.8);line-height:1.6}
+    /* steps */
+    .steps{display:flex;flex-direction:column;gap:10px;flex:1}
+    .step{display:flex;align-items:flex-start;gap:16px;padding:14px 18px;background:var(--cream2);border-radius:10px;border-left:4px solid var(--gold2)}
+    .stepn{font-family:var(--fd);font-size:22px;font-weight:800;color:var(--gold2);line-height:1;min-width:28px}
+    .stept{font-size:14px;color:var(--ink2);line-height:1.55}
+    .stept strong{color:var(--ink);font-weight:700}
+    /* prose */
+    .prose{font-size:14px;color:var(--ink2);line-height:1.7}
+    .prose strong{color:var(--ink);font-weight:700}
+    .dpr{font-size:14px;color:rgba(246,240,228,.82);line-height:1.7}
+    .dpr strong{color:var(--gold3)}
+    .ey{font-family:var(--fd);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+    .ey.g{color:var(--gold2)} .ey.l{color:rgba(240,192,96,.85)}
+    /* ornament */
+    .orn{display:flex;align-items:center;gap:10px;margin:4px 0}
+    .ornl{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold2),transparent)}
+    .orns{font-size:14px;color:var(--gold2)}
+    /* footnote */
+    .fn{font-size:11.5px;color:var(--muted);font-style:italic;line-height:1.5;padding:4px 48px 10px}
+    .fn.l{color:rgba(246,240,228,.5)}
+    /* callout */
+    .callout{background:rgba(168,118,46,.14);border-left:4px solid var(--gold2);border-radius:0 10px 10px 0;padding:12px 18px;font-size:13.5px;font-style:italic;color:rgba(246,240,228,.85);line-height:1.6}
+    /* progress */
+    #prog{position:fixed;top:0;left:0;right:0;height:3px;z-index:200;background:rgba(255,255,255,.08)}
+    #pbar{height:100%;background:linear-gradient(90deg,var(--red),var(--gold2),var(--green));transition:width .4s var(--ease)}
+    /* nav */
+    #nav{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:10px;gap:8px}
+    .nb{background:rgba(30,30,30,.75);backdrop-filter:blur(12px);color:rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.1);width:42px;height:42px;border-radius:50%;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .15s}
+    .nb:hover{background:rgba(168,118,46,.85);transform:scale(1.08)}
+    .dots{display:flex;gap:7px;align-items:center}
+    .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);cursor:pointer;transition:background .2s,transform .2s;border:0}
+    .dot.on{background:var(--gold3);transform:scale(1.35)}
+    .nc{font-family:var(--fd);font-size:12px;font-weight:700;color:rgba(255,255,255,.45);min-width:48px;text-align:center}
+    .nfs{background:rgba(30,30,30,.75);backdrop-filter:blur(12px);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.08);width:38px;height:38px;border-radius:8px;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;margin-left:8px}
+    .nfs:hover{background:rgba(168,118,46,.75)}
+    /* photo overlay */
+    .pover{position:absolute;inset:0;object-fit:cover;width:100%;height:100%;opacity:.22;filter:saturate(.6) brightness(.6)}
+    .pside{position:absolute;right:0;top:0;bottom:0;width:36%;object-fit:cover;opacity:.2;filter:saturate(.7)}
+    /* ANIMATIONS */
+    @keyframes fup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    .slide.active .a{animation:fup .5s var(--ease) both}
+    .slide.active .d1{animation-delay:.08s}.slide.active .d2{animation-delay:.18s}
+    .slide.active .d3{animation-delay:.28s}.slide.active .d4{animation-delay:.38s}
+    .slide.active .d5{animation-delay:.48s}.slide.active .d6{animation-delay:.6s}
+    /* SLIDE 1 specifics */
+    #s1 .bg{background:var(--cream)}
+    #s1 .mapimg{position:absolute;left:-20px;bottom:-10px;height:82%;z-index:3;opacity:.95}
+    #s1 .cr{position:absolute;right:56px;top:50%;transform:translateY(-50%);width:52%;z-index:6}
+    .bigt{font-family:var(--fd);font-size:42px;font-weight:800;color:var(--ink);line-height:1.1;letter-spacing:-.02em}
+    .bigy{font-family:var(--fd);font-size:56px;font-weight:800;color:var(--red);line-height:1;letter-spacing:-.03em}
+    .grule{width:72px;height:3px;background:linear-gradient(90deg,var(--gold2),var(--copper));border-radius:2px;margin:18px 0 16px}
+    .tag{font-family:var(--fs);font-size:19px;color:var(--gold);font-style:italic;margin-bottom:12px}
+    .sub{font-size:14px;color:var(--ink2);line-height:1.65;max-width:420px;margin-bottom:22px}
+    .badges{display:flex;gap:10px;flex-wrap:wrap}
+    .badge{font-family:var(--fd);font-size:11px;font-weight:700;letter-spacing:.08em;padding:6px 14px;border-radius:999px;color:#fff}
+    .badge.bg{background:var(--gold);color:var(--cream)} .badge.br{background:var(--red)} .badge.bgr{background:var(--green)}
+    .ilg{position:absolute;top:14px;right:48px;display:flex;align-items:center;gap:12px;z-index:10}
+    .ilg img{height:32px;width:auto}
+    /* SLIDE 2 */
+    #s2 .bg{background:var(--cream)}
+    /* SLIDE 3 dark */
+    #s3 .bg{background:var(--s1)}
+    /* SLIDE 4 dark green */
+    #s4 .bg{background:var(--s2)}
+    /* SLIDE 5 dark ocean */
+    #s5 .bg{background:var(--s3)}
+    /* SLIDE 6 dark copper */
+    #s6 .bg{background:var(--s4)}
+    /* SLIDE 7 light */
+    #s7 .bg{background:var(--cream)}
+    /* SLIDE 8 dark */
+    #s8 .bg{background:var(--s6)}
+    .bcl{font-family:var(--fd);font-size:54px;font-weight:800;color:var(--cream);line-height:1.08;letter-spacing:-.02em}
+    .grbig{width:80px;height:3px;background:linear-gradient(90deg,var(--gold2),var(--copper));border-radius:2px;margin:22px 0}
+    .cld{font-size:15px;color:rgba(246,240,228,.78);line-height:1.7}
+    .emb{position:absolute;right:60px;bottom:60px;width:220px;opacity:.9;filter:drop-shadow(0 8px 40px rgba(168,118,46,.45))}
+  </style>
+</head>
+<body>
+<div id="prog"><div id="pbar"></div></div>
+<div id="deck">
+
+<!-- ===== SLIDE 1 : TITRE ===== -->
+<div class="slide active" id="s1">
+  <div class="bg"></div>
+  <div class="flag top"></div>
+  <div class="ilg">
+    <img src="../public/assets/logos/uca.webp" alt="UCA">
+    <img src="../public/assets/logos/cite-innovation.png" alt="Cité de l'Innovation">
+    <img src="../public/assets/logos/fssm.png" alt="FSSM">
+    <img src="../public/assets/logos/fstg.webp" alt="FSTG">
+  </div>
+  <img class="mapimg" src="../a_clean_vector_style_event_logo_emblem_on_a_white.png" alt="Carte Maroc — MSIC">
+  <div class="inner">
+    <div class="cr a d1">
+      <p class="ey g" style="margin-bottom:14px;letter-spacing:.14em">
+        1<sup>re</sup> ÉDITION &nbsp;·&nbsp; <span style="color:var(--red)">29–31 OCT. 2026</span> &nbsp;·&nbsp; <span style="color:var(--green)">MARRAKECH</span>
+      </p>
+      <div class="bigt a d2">Moroccan Sahara<br>Innovation Challenge</div>
+      <div class="bigy a d3">2026</div>
+      <div class="grule a d3"></div>
+      <p class="tag a d4">Un territoire &bull; Un potentiel &bull; Un avenir</p>
+      <p class="sub a d4">Innover pour les Provinces du Sud. Étudiants, chercheurs, startups : des solutions à fort impact, de Tanger à Lagouira.</p>
+      <div class="badges a d5">
+        <span class="badge bg">6 CHALLENGES</span>
+        <span class="badge br">IDEA · LAB · SCALE</span>
+        <span class="badge bgr">AÏD AL WAHDA</span>
+      </div>
+    </div>
+  </div>
+  <div class="flag bot"></div>
+  <div class="snum">01 / 08</div>
+</div>
+
+<!-- ===== SLIDE 2 : Provinces du Sud ===== -->
+<div class="slide" id="s2">
+  <div class="bg"></div>
+  <div class="flag top"></div>
+  <img class="pside" src="../public/assets/sahara/dakhla_dunes_ocean.jpg" alt="">
+  <div class="inner">
+    <div class="ft a d1"><span>Innover pour les Provinces du Sud</span><hr><small>02 / 08</small></div>
+    <div class="fc">
+      <p class="prose a d2">Organisé par la <strong>Cité de l'Innovation de l'Université Cadi Ayyad</strong>, avec la Faculté des Sciences Semlalia (FSSM) et la Faculté des Sciences et Techniques de Marrakech (FSTG).</p>
+      <p class="prose a d3">Le Challenge s'inscrit entre l'<strong>Aïd Al Wahda</strong> (31 octobre) et la <strong>Glorieuse Marche Verte</strong> (6 novembre). L'événement se tient <strong>du 29 au 31 octobre 2026 à Marrakech</strong>. La finale a lieu le jour de la Fête de l'Unité.</p>
+      <div class="orn a d3"><div class="ornl"></div><span class="orns">✦</span><div class="ornl"></div></div>
+      <div class="cards a d4">
+        <div class="card"><div class="cl">Un territoire</div><div class="ct">Les 12 régions du Royaume, de Tanger à Lagouira. Trois régions des Provinces du Sud : Guelmim-Oued Noun, Laâyoune-Sakia El Hamra, Dakhla-Oued Ed-Dahab.</div></div>
+        <div class="card"><div class="cl">Un potentiel</div><div class="ct">Port Dakhla Atlantique, énergies renouvelables, économie bleue, agriculture, logistique, tourisme. Une ouverture sur l'Afrique et l'Atlantique.</div></div>
+        <div class="card"><div class="cl">Un avenir</div><div class="ct">Connaissance, innovation, entrepreneuriat. Les meilleurs projets entrent dans un programme de maturation d'un an à la Cité de l'Innovation.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="flag bot"></div>
+</div>
+
+<!-- ===== SLIDE 3 : Six challenges (DARK) ===== -->
+<div class="slide" id="s3">
+  <div class="bg dark"></div>
+  <div class="flag top"></div>
+  <div class="inner">
+    <div class="ft d a d1"><span>Six challenges thématiques</span><hr><small>03 / 08</small></div>
+    <div class="fc">
+      <div class="pstrip a d2">
+        <img src="../public/assets/sahara/dakhla_dunes_ocean.jpg" alt="Dunes Dakhla">
+        <img src="../public/assets/sahara/renewable_energy.jpg" alt="Énergies renouvelables">
+        <img src="../public/assets/sahara/smart_agriculture.jpg" alt="Agritech désert">
+        <img src="../public/assets/sahara/dakhla_port.jpg" alt="Port Dakhla">
+      </div>
+      <div class="cgrid a d3">
+        <div class="ci"><div class="cn g">01</div><div class="cb"><h4>Océan, Port &amp; Économie bleue</h4><p>Pêche durable, aquaculture, services maritimes, Port Dakhla Atlantique</p></div><i class="fa-solid fa-anchor cico" style="color:var(--gold3)"></i></div>
+        <div class="ci"><div class="cn r">04</div><div class="cb"><h4>Mobilité, Logistique &amp; Territoires intelligents</h4><p>Transports connectés, smart city, drones, corridors africains</p></div><i class="fa-solid fa-route cico" style="color:var(--red)"></i></div>
+        <div class="ci"><div class="cn g">02</div><div class="cb"><h4>Eau, Énergies renouvelables &amp; Transition verte</h4><p>Solaire, éolien, eau, dessalement, hydrogène vert</p></div><i class="fa-solid fa-solar-panel cico" style="color:var(--gold3)"></i></div>
+        <div class="ci"><div class="cn r">05</div><div class="cb"><h4>Art, Culture, Tourisme, Sport &amp; Expérience</h4><p>Patrimoine hassani, tourisme durable, sport saharien</p></div><i class="fa-solid fa-palette cico" style="color:var(--red)"></i></div>
+        <div class="ci"><div class="cn g">03</div><div class="cb"><h4>Agriculture, Alimentation &amp; Bioressources</h4><p>Agriculture désertique, algues, produits du terroir, halal</p></div><i class="fa-solid fa-seedling cico" style="color:var(--gold3)"></i></div>
+        <div class="ci"><div class="cn r">06</div><div class="cb"><h4>Entrepreneuriat, Investissement &amp; Chaînes de valeur</h4><p>Startups sahariennes, financement, accès aux marchés africains</p></div><i class="fa-solid fa-chart-line cico" style="color:var(--red)"></i></div>
+      </div>
+      <p class="fn l a d5">Solutions technologiques, services, produits, procédés ou modèles économiques — une attention particulière aux innovations ouvertes sur l'Afrique et l'espace atlantique.</p>
+    </div>
+  </div>
+  <div class="flag bot"></div>
+</div>
+
+<!-- ===== SLIDE 4 : Trois parcours (DARK green) ===== -->
+<div class="slide" id="s4">
+  <div class="bg dark"></div>
+  <div class="flag top"></div>
+  <div class="inner">
+    <div class="ft d a d1"><span>Trois parcours de maturité</span><hr><small>04 / 08</small></div>
+    <div class="fc" style="gap:16px">
+      <p class="dpr a d2">Chaque parcours correspond à un profil et un niveau de maturité. Tous visent <strong>l'impact territorial dans les Provinces du Sud</strong>.</p>
+      <div class="cards a d3" style="gap:18px">
+        <div class="card dk" style="border-top:4px solid var(--green)">
+          <div class="cl" style="font-size:14px">💡 IDEA — Imaginer</div>
+          <div style="font-family:var(--fd);font-size:12px;color:var(--gold3);font-weight:600;margin-bottom:8px">Étudiants &amp; porteurs d'idées</div>
+          <div class="ct" style="font-size:14px">Du concept à une première preuve : prototype, maquette, MVP ou modèle économique.</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(240,192,96,.15)">
+            <div style="font-size:11px;color:rgba(246,240,228,.45);font-family:var(--fd);font-weight:700;letter-spacing:.08em;margin-bottom:4px">PROFILS</div>
+            <div style="font-size:12px;color:rgba(246,240,228,.7)">Étudiants · Porteurs d'idées · 1<sup>er</sup> projet</div>
+          </div>
+        </div>
+        <div class="card dk" style="border-top:4px solid var(--ocean)">
+          <div class="cl" style="font-size:14px">🔬 LAB — Transférer</div>
+          <div style="font-family:var(--fd);font-size:12px;color:var(--gold3);font-weight:600;margin-bottom:8px">Chercheurs</div>
+          <div class="ct" style="font-size:14px">D'un résultat scientifique vers le territoire : maturation, propriété intellectuelle, TRL/CRL.</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(240,192,96,.15)">
+            <div style="font-size:11px;color:rgba(246,240,228,.45);font-family:var(--fd);font-weight:700;letter-spacing:.08em;margin-bottom:4px">PROFILS</div>
+            <div style="font-size:12px;color:rgba(246,240,228,.7)">Chercheurs · Doctorants · Laboratoires</div>
+          </div>
+        </div>
+        <div class="card dk" style="border-top:4px solid var(--gold2)">
+          <div class="cl" style="font-size:14px">🚀 SCALE — Déployer</div>
+          <div style="font-family:var(--fd);font-size:12px;color:var(--gold3);font-weight:600;margin-bottom:8px">Startups</div>
+          <div class="ct" style="font-size:14px">Une solution déjà avancée à adapter, expérimenter et déployer dans les Provinces du Sud.</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(240,192,96,.15)">
+            <div style="font-size:11px;color:rgba(246,240,228,.45);font-family:var(--fd);font-weight:700;letter-spacing:.08em;margin-bottom:4px">PROFILS</div>
+            <div style="font-size:12px;color:rgba(246,240,228,.7)">Startups · PME innovantes · Scale-ups</div>
+          </div>
+        </div>
+      </div>
+      <div class="stats a d4">
+        <div class="stat"><div class="stn">1–6</div><div class="stl">personnes / équipe</div></div>
+        <div class="stat"><div class="stn">18 oct.</div><div class="stl">clôture candidatures</div></div>
+        <div class="stat"><div class="stn">0 DH</div><div class="stl">participation gratuite</div></div>
+        <div class="stat"><div class="stn">12 mois</div><div class="stl">accompagnement post-Challenge</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="flag bot"></div>
+</div>
+
+<!-- ===== SLIDE 5 : Programme (DARK ocean) ===== -->
+<div class="slide" id="s5">
+  <div class="bg dark"></div>
+  <img class="pover" src="../public/assets/sahara/culture_zellige.jpg" alt="">
+  <div class="flag top"></div>
+  <div class="inner">
+    <div class="ft d a d1"><span>Du 29 au 31 octobre 2026</span><hr><small>05 / 08</small></div>
+    <div class="fc">
+      <div class="tl a d2">
+        <div class="ts">
+          <div class="td">29</div>
+          <div class="tdate">JEUDI 29 OCTOBRE</div>
+          <div class="ttitle">Ouverture &amp; Project Clinics</div>
+          <div class="ttext">Cérémonie d'ouverture et lancement officiel. Conférence inaugurale. L'après-midi : Project Clinics, équipe par équipe, avec les mentors et experts.</div>
+        </div>
+        <div class="ts">
+          <div class="td">30</div>
+          <div class="tdate">VENDREDI 30 OCTOBRE</div>
+          <div class="ttitle">Bootcamp intensif</div>
+          <div class="ttext">Proposition de valeur, business model, préparation du pitch. L'après-midi : mise en pratique et coaching individuel par équipe.</div>
+        </div>
+        <div class="ts">
+          <div class="td" style="background:linear-gradient(135deg,var(--red),var(--green))">31</div>
+          <div class="tdate" style="color:var(--gold3)">SAMEDI 31 — AÏD AL WAHDA 🇲🇦</div>
+          <div class="ttitle">Grand Final</div>
+          <div class="ttext">Matin : coaching final. Après-midi : Final Pitches, délibération du jury, remise des prix. La finale, le jour de la Fête de l'Unité.</div>
+        </div>
+      </div>
+      <div class="orn a d3" style="margin:0 0 4px">
+        <div class="ornl" style="background:linear-gradient(90deg,transparent,rgba(240,192,96,.3),transparent)"></div>
+        <span class="orns" style="color:var(--gold3)">✦</span>
+        <div class="ornl" style="background:linear-gradient(90deg,transparent,rgba(240,192,96,.3),transparent)"></div>
+      </div>
+      <div class="stats a d4" style="margin-bottom:0">
+        <div class="stat"><div class="stn" style="font-size:20px">18 oct.</div><div class="stl">Clôture candidatures</div></div>
+        <div class="stat"><div class="stn" style="font-size:20px">21 oct.</div><div class="stl">Équipes retenues annoncées</div></div>
+        <div class="stat"><div class="stn" style="font-size:20px">22–28 oct.</div><div class="stl">Suivi à distance</div></div>
+        <div class="stat"><div class="stn" style="font-size:20px">31 oct.</div><div class="stl">Remise des prix · Marrakech</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="flag bot"></div>
+</div>
+
+<!-- ===== SLIDE 6 : Évaluation &amp; Prix (cuivre) ===== -->
+<div class="slide" id="s6">
+  <div class="bg dark"></div>
+  <div class="flag top"></div>
+  <div class="inner">
+    <div class="ft d a d1"><span>Évaluation &amp; Prix</span><hr><small>06 / 08</small></div>
+    <div class="fc">
+      <p class="dpr a d2"><strong>Huit critères :</strong> pertinence pour les Provinces du Sud · innovation · création de valeur · faisabilité · marché · emploi · impact territorial · qualité de l'équipe.</p>
+      <div class="callout a d3">🔍 &nbsp;<em>« Cette innovation répond-elle à un défi réel, et peut-elle être expérimentée ou déployée dans les Provinces du Sud ? »</em></div>
+      <div class="prizes a d4">
+        <div class="prize">
+          <div class="ph"><div class="ptag">Parcours IDEA</div><div class="pname">Prix IDEA</div><div class="psub">Best Emerging Innovation</div></div>
+          <div class="pb">Décerné au meilleur projet conceptuel ou prototype innovant issu du parcours Étudiants.</div>
+        </div>
+        <div class="prize" style="border-color:rgba(14,111,168,.4)">
+          <div class="ph" style="background:linear-gradient(135deg,rgba(14,111,168,.45),rgba(14,111,168,.15))"><div class="ptag">Parcours LAB</div><div class="pname">Prix LAB</div><div class="psub">Best Research Valorization</div></div>
+          <div class="pb">Décerné au meilleur transfert de technologie ou résultat de recherche valorisé pour le territoire.</div>
+        </div>
+        <div class="prize" style="border-color:rgba(27,107,58,.4)">
+          <div class="ph" style="background:linear-gradient(135deg,rgba(27,107,58,.45),rgba(27,107,58,.15))"><div class="ptag">Parcours SCALE</div><div class="pname">Prix SCALE</div><div class="psub">Best Market &amp; Deployment</div></div>
+          <div class="pb">Décerné à la meilleure startup ayant adapté et déployé une solution dans les Provinces du Sud.</div>
+        </div>
+      </div>
+      <p class="fn l a d5">🏆 Grand Prix Sahara Innovation Challenge &nbsp;·&nbsp; Six prix thématiques &nbsp;·&nbsp; Prix Coup de cœur du Jury</p>
+    </div>
+  </div>
+  <div class="flag bot"></div>
+</div>
+
+<!-- ===== SLIDE 7 : Candidater (light) ===== -->
+<div class="slide" id="s7">
+  <div class="bg"></div>
+  <div class="flag top"></div>
+  <img class="pside" src="../public/assets/sahara/smart_agriculture.jpg" alt="">
+  <div class="inner">
+    <div class="ft a d1"><span>Comment candidater ?</span><hr><small>07 / 08</small></div>
+    <div class="fc">
+      <div class="steps a d2">
+        <div class="step"><div class="stepn">1</div><div class="stept"><strong>Choisir un parcours :</strong> IDEA (étudiants &amp; idées), LAB (chercheurs) ou SCALE (startups).</div></div>
+        <div class="step"><div class="stepn">2</div><div class="stept"><strong>Choisir un des six challenges</strong> thématiques correspondant à votre projet.</div></div>
+        <div class="step"><div class="stepn">3</div><div class="stept"><strong>Déposer le formulaire en ligne</strong> et une présentation PDF ou PowerPoint (5 Mo maximum).</div></div>
+        <div class="step"><div class="stepn">4</div><div class="stept"><strong>Équipe de 1 à 6 personnes.</strong> Le porteur de projet est l'interlocuteur unique du comité.</div></div>
+      </div>
+      <div class="card a d4" style="background:rgba(26,40,32,.06);border-color:rgba(168,118,46,.25);border-left:4px solid var(--green)">
+        <div class="cl" style="color:var(--green)">À savoir</div>
+        <div class="ct">Participation <strong>gratuite</strong> pour les équipes sélectionnées. Les projets restent la propriété de leurs porteurs. Les meilleurs intègrent <strong>un an de maturation</strong> à la Cité de l'Innovation de l'Université Cadi Ayyad.</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;padding:4px 0" class="a d5">
+        <img src="../public/assets/logos/uca.webp" alt="UCA" style="height:36px">
+        <img src="../public/assets/logos/cite-innovation.png" alt="Cité de l'Innovation" style="height:36px">
+        <img src="../public/assets/logos/fssm.png" alt="FSSM" style="height:36px">
+        <img src="../public/assets/logos/fstg.webp" alt="FSTG" style="height:36px">
+      </div>
+    </div>
+  </div>
+  <div class="flag bot"></div>
+</div>
+
+<!-- ===== SLIDE 8 : CLOSING ===== -->
+<div class="slide" id="s8">
+  <div class="bg dark"></div>
+  <img class="pover" src="../public/assets/sahara/dakhla_dunes_ocean.jpg" alt="">
+  <div class="flag top"></div>
+  <div class="inner" style="padding:56px 64px">
+    <div class="a d1">
+      <p class="ey l" style="margin-bottom:18px;letter-spacing:.16em">MOROCCAN SAHARA INNOVATION CHALLENGE</p>
+      <div class="bcl">Un territoire.<br>Un potentiel.<br>Un avenir.</div>
+      <div class="grbig"></div>
+      <p class="cld">Marrakech, du 29 au 31 octobre 2026.<br>La finale, le jour de l'Aïd Al Wahda.</p>
+      <p class="a d3" style="font-family:var(--fd);font-size:14px;font-weight:700;color:var(--green);margin-top:26px;letter-spacing:.04em">
+        Cité de l'Innovation &nbsp;·&nbsp; Université Cadi Ayyad
+      </p>
+    </div>
+    <img class="emb a d4" src="../public/assets/brand/logo-sic.png" alt="Logo MSIC">
+  </div>
+  <div class="flag bot"></div>
+  <div class="snum l">08 / 08</div>
+</div>
+
+</div><!-- #deck -->
+
+<nav id="nav">
+  <button class="nb" id="bp" aria-label="Précédent"><i class="fa-solid fa-chevron-left"></i></button>
+  <div class="dots" id="dots"></div>
+  <span class="nc" id="nc">1 / 8</span>
+  <button class="nb" id="bn" aria-label="Suivant"><i class="fa-solid fa-chevron-right"></i></button>
+  <button class="nfs" id="bfs" aria-label="Plein écran"><i class="fa-solid fa-expand"></i></button>
+</nav>
+
+<script>
+(()=>{
+  "use strict";
+  const N=8; let cur=1;
+  function sc(){
+    const d=document.getElementById('deck');
+    const vw=window.innerWidth, vh=window.innerHeight, nh=68;
+    const s=Math.min(vw/1280,(vh-nh)/720);
+    d.style.transform=`translate(-50%,calc(-50% - ${nh/2}px)) scale(${s})`;
+  }
+  sc(); window.addEventListener('resize',sc);
+  const dotsEl=document.getElementById('dots');
+  for(let i=1;i<=N;i++){
+    const b=document.createElement('button');
+    b.className='dot'+(i===1?' on':''); b.setAttribute('aria-label','Slide '+i);
+    b.dataset.n=i; b.addEventListener('click',()=>go(+b.dataset.n)); dotsEl.appendChild(b);
+  }
+  function upd(){
+    const p=(cur-1)/(N-1)*100;
+    document.getElementById('pbar').style.width=p+'%';
+    document.getElementById('nc').textContent=cur+' / '+N;
+    document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i+1===cur));
+  }
+  function go(n){
+    if(n<1||n>N||n===cur)return;
+    const prev=document.getElementById('s'+cur);
+    prev.classList.remove('active'); prev.classList.add('leaving');
+    setTimeout(()=>prev.classList.remove('leaving'),600);
+    cur=n;
+    document.getElementById('s'+cur).classList.add('active');
+    upd();
+  }
+  document.getElementById('bp').onclick=()=>go(cur-1);
+  document.getElementById('bn').onclick=()=>go(cur+1);
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();go(cur+1);}
+    if(e.key==='ArrowLeft'){e.preventDefault();go(cur-1);}
+    if(e.key==='f'||e.key==='F')toggleFS();
+    if(e.key==='Home')go(1); if(e.key==='End')go(N);
+  });
+  let tx=null;
+  document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+  document.addEventListener('touchend',e=>{
+    if(tx===null)return;
+    const dx=e.changedTouches[0].clientX-tx;
+    if(Math.abs(dx)>50) dx<0?go(cur+1):go(cur-1);
+    tx=null;
+  },{passive:true});
+  function toggleFS(){
+    if(!document.fullscreenElement)document.documentElement.requestFullscreen().catch(()=>{});
+    else document.exitFullscreen().catch(()=>{});
+  }
+  document.getElementById('bfs').onclick=toggleFS;
+  document.addEventListener('fullscreenchange',()=>{
+    const ic=document.querySelector('#bfs i');
+    ic.className=document.fullscreenElement?'fa-solid fa-compress':'fa-solid fa-expand';
+    sc();
+  });
+  upd();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+\usefonttheme{professionalfonts}
+\usepackage{fontspec}
+\setmainfont{Palatino Linotype}
+\setsansfont{Calibri}
+\usepackage{tikz}
+\usepackage{graphicx}
+
+\definecolor{cream}{HTML}{F6F0E4}
+\definecolor{cream2}{HTML}{EFE4D0}
+\definecolor{ink}{HTML}{1A3328}
+\definecolor{gold}{HTML}{A67C3D}
+\definecolor{redm}{HTML}{B4232A}
+\definecolor{greenm}{HTML}{1B6B3A}
+\definecolor{muted}{HTML}{5C5346}
+
+\setbeamercolor{normal text}{fg=ink,bg=cream}
+\setbeamercolor{structure}{fg=gold}
+\setbeamercolor{frametitle}{fg=ink}
+\setbeamerfont{frametitle}{family=\sffamily,series=\bfseries,size=\Large}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}{}
+\setbeamertemplate{headline}{}
+\setbeamersize{text margin left=8mm,text margin right=8mm}
+\setbeamertemplate{frametitle}{%
+  \vspace{1mm}{\usebeamerfont{frametitle}\insertframetitle\par}%
+  \vspace{0.4mm}{\color{gold}\rule{26mm}{0.7pt}}\par\vspace{1mm}%
+}
+
+\setbeamertemplate{background}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[cream] (current page.north west) rectangle (current page.south east);
+    \node[opacity=0.5,inner sep=0] at (current page.center)
+      {\includegraphics[width=\paperwidth,height=\paperheight]{img/zellige-bg.png}};
+    \fill[redm] (current page.north west) rectangle ([yshift=-1.5mm]current page.north east);
+    \fill[greenm] ([yshift=-1.5mm]current page.north west) rectangle ([yshift=-2.4mm]current page.north east);
+  \end{tikzpicture}%
+}
+
+\newcommand{\card}[2]{%
+  \colorbox{cream2}{\parbox[t]{0.94\linewidth}{{\sffamily\scriptsize\bfseries\color{gold}#1}\par\vspace{1mm}{\small #2}}}%
+}
+
+\begin{document}
+
+\begin{frame}[plain]
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[cream] (current page.north west) rectangle (current page.south east);
+    \node[opacity=0.4,inner sep=0] at (current page.center)
+      {\includegraphics[width=\paperwidth,height=\paperheight]{img/zellige-bg.png}};
+    \fill[redm] (current page.north west) rectangle ([yshift=-2mm]current page.north east);
+    \fill[greenm] ([yshift=-2mm]current page.north west) rectangle ([yshift=-3.2mm]current page.north east);
+    \node[anchor=north,inner sep=0] at ([yshift=-6mm]current page.north)
+      {\includegraphics[height=9mm]{img/uca.png}\hspace{3mm}%
+       \includegraphics[height=9mm]{img/cim.png}\hspace{3mm}%
+       \includegraphics[height=9mm]{img/fssm.png}\hspace{3mm}%
+       \includegraphics[height=9mm]{img/fst.png}};
+    \node[anchor=south west,inner sep=0] at ([xshift=-2mm,yshift=-4mm]current page.south west)
+      {\includegraphics[height=0.78\paperheight]{img/map.png}};
+  \end{tikzpicture}
+  \vspace*{14mm}
+  \hspace*{0.44\paperwidth}%
+  \begin{minipage}{0.52\paperwidth}
+    {\sffamily\scriptsize\bfseries\color{gold} 1\textsuperscript{re} \'EDITION \textcolor{redm}{\textbullet} 29 -- 31 OCTOBRE 2026 \textcolor{greenm}{\textbullet} MARRAKECH}\par\vspace{3mm}
+    {\sffamily\bfseries\fontsize{20}{23}\selectfont\color{ink} Moroccan Sahara\par Innovation Challenge\par}
+    {\sffamily\bfseries\fontsize{16}{18}\selectfont\color{redm} 2026\par}
+    \vspace{1.5mm}{\color{gold}\rule{34mm}{1pt}}\par\vspace{2mm}
+    {\itshape\color{gold} Un territoire \textbullet\ Un potentiel \textbullet\ Un avenir}\par\vspace{2mm}
+    {\small\color{ink} Innover pour les Provinces du Sud. \'Etudiants, chercheurs, startups : des solutions \`a fort impact, de Tanger \`a Lagouira.}\par\vspace{3mm}
+    {\sffamily\footnotesize\bfseries\color{greenm} 6 CHALLENGES \textcolor{gold}{|} \textcolor{redm}{IDEA \textbullet\ LAB \textbullet\ SCALE} \textcolor{gold}{|} \textcolor{ink}{A\"ID AL WAHDA}}
+  \end{minipage}
+\end{frame}
+
+\begin{frame}{Innover pour les Provinces du Sud}
+  {\small\color{muted} Organis\'e par la Cit\'e de l'Innovation de l'Universit\'e Cadi Ayyad, avec la Facult\'e des Sciences Semlalia et la Facult\'e des Sciences et Techniques de Marrakech.}\par\vspace{2mm}
+  {\small Le Challenge s'inscrit entre l'\textbf{A\"id Al Wahda} (31 octobre) et la \textbf{Glorieuse Marche Verte} (6 novembre). L'\'ev\'enement lui-m\^eme se tient \textbf{du 29 au 31 octobre 2026 \`a Marrakech}. La finale a lieu le jour de la F\^ete de l'Unit\'e.}\par\vspace{2mm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}\card{Un territoire}{Les 12 r\'egions du Royaume, de Tanger \`a Lagouira. Trois r\'egions des Provinces du Sud : Guelmim-Oued Noun, La\^ayoune-Sakia El Hamra, Dakhla-Oued Ed-Dahab.}\end{column}
+    \begin{column}{0.32\textwidth}\card{Un potentiel}{Port Dakhla Atlantique, \'energies renouvelables, \'economie bleue, agriculture, logistique, tourisme. Une ouverture sur l'Afrique et l'Atlantique.}\end{column}
+    \begin{column}{0.32\textwidth}\card{Un avenir}{Connaissance, innovation, entrepreneuriat. Les meilleurs projets entrent dans un programme de maturation d'un an \`a la Cit\'e de l'Innovation.}\end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Six challenges}
+  \small
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{\textcolor{gold}{01}} Oc\'ean, Port \& \'Economie bleue\par
+      \textbf{\textcolor{gold}{02}} Eau, \'Energies renouvelables \& Transition verte\par
+      \textbf{\textcolor{gold}{03}} Agriculture, Alimentation \& Bioressources\par
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{\textcolor{redm}{04}} Mobilit\'e, Logistique \& Territoires intelligents\par
+      \textbf{\textcolor{redm}{05}} Art, Culture, Tourisme, Sport \& Exp\'erience\par
+      \textbf{\textcolor{redm}{06}} Entrepreneuriat, Investissement \& Cha\^ines de valeur\par
+    \end{column}
+  \end{columns}
+  \vspace{3mm}
+  {\footnotesize\color{muted} Solutions technologiques, services, produits, proc\'ed\'es ou mod\`eles \'economiques. Une attention particuli\`ere aux innovations ouvertes sur l'Afrique et l'espace atlantique.}
+\end{frame}
+
+\begin{frame}{Trois parcours}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}\card{IDEA \enspace Imaginer}{\'Etudiants et porteurs d'id\'ees. Du concept \`a une premi\`ere preuve : prototype, maquette, MVP ou mod\`ele \'economique.}\end{column}
+    \begin{column}{0.32\textwidth}\card{LAB \enspace Transf\'erer}{Chercheurs. D'un r\'esultat scientifique vers le territoire : maturation, propri\'et\'e intellectuelle, TRL/CRL.}\end{column}
+    \begin{column}{0.32\textwidth}\card{SCALE \enspace D\'eployer}{Startups. Une solution d\'ej\`a avanc\'ee \`a adapter, exp\'erimenter et d\'eployer dans les Provinces du Sud.}\end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Du 29 au 31 octobre 2026}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}\card{Jeudi 29}{C\'er\'emonie d'ouverture et lancement. Conf\'erence inaugurale. L'apr\`es-midi : Project Clinics, \'equipe par \'equipe.}\end{column}
+    \begin{column}{0.32\textwidth}\card{Vendredi 30}{Bootcamp : proposition de valeur, business model, pitch. L'apr\`es-midi : mise en pratique et coaching.}\end{column}
+    \begin{column}{0.32\textwidth}\card{Samedi 31 \enspace A\"id Al Wahda}{Matin : coaching final. Apr\`es-midi : Final Pitches, d\'elib\'eration du jury, remise des prix.}\end{column}
+  \end{columns}
+  \vspace{3mm}
+  {\footnotesize\color{muted} Candidatures jusqu'au 18 octobre. \'Equipes retenues le 21 octobre. Suivi \`a distance du 22 au 28 octobre.}
+\end{frame}
+
+\begin{frame}{\'Evaluation et prix}
+  {\small Huit crit\`eres communs : pertinence pour les Provinces du Sud, innovation, cr\'eation de valeur, faisabilit\'e, march\'e, emploi, impact territorial, qualit\'e de l'\'equipe.}\par\vspace{2mm}
+  {\small La question du jury : \textit{cette innovation r\'epond-elle \`a un d\'efi r\'eel, et peut-elle \^etre exp\'eriment\'ee ou d\'eploy\'ee dans les Provinces du Sud ?}}\par\vspace{3mm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}\card{Prix IDEA}{Best Emerging Innovation}\end{column}
+    \begin{column}{0.32\textwidth}\card{Prix LAB}{Best Research Valorization}\end{column}
+    \begin{column}{0.32\textwidth}\card{Prix SCALE}{Best Market \& Deployment}\end{column}
+  \end{columns}
+  \vspace{2mm}
+  {\footnotesize\color{muted} Grand Prix Sahara Innovation Challenge. Six prix th\'ematiques. Prix Coup de c\oe ur du Jury.}
+\end{frame}
+
+\begin{frame}{Candidater}
+  \small
+  \begin{enumerate}
+    \item Choisir un parcours : IDEA, LAB ou SCALE.
+    \item Choisir un des six challenges.
+    \item D\'eposer le formulaire en ligne et une pr\'esentation PDF ou PowerPoint, 5\,Mo maximum.
+    \item \'Equipe de 1 \`a 6 personnes. Le porteur est l'interlocuteur unique.
+  \end{enumerate}
+  \vspace{2mm}
+  {\footnotesize\color{muted} Participation gratuite pour les \'equipes s\'electionn\'ees. Les projets restent la propri\'et\'e de leurs porteurs. Les meilleurs int\`egrent un an de maturation \`a la Cit\'e de l'Innovation.}
+\end{frame}
+
+\begin{frame}[plain]
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[cream] (current page.north west) rectangle (current page.south east);
+    \node[opacity=0.4,inner sep=0] at (current page.center)
+      {\includegraphics[width=\paperwidth,height=\paperheight]{img/zellige-bg.png}};
+    \fill[redm] (current page.south west) rectangle ([yshift=2mm]current page.south east);
+    \fill[greenm] ([yshift=2mm]current page.south west) rectangle ([yshift=3.2mm]current page.south east);
+    \node[anchor=north,inner sep=0] at ([yshift=-7mm]current page.north)
+      {\includegraphics[height=8mm]{img/uca.png}\hspace{3mm}\includegraphics[height=8mm]{img/cim.png}};
+  \end{tikzpicture}
+  \vspace*{22mm}
+  {\sffamily\scriptsize\color{gold}\textbf{MOROCCAN SAHARA INNOVATION CHALLENGE}}\par\vspace{3mm}
+  {\sffamily\bfseries\fontsize{26}{30}\selectfont\color{ink} Un territoire.\par Un potentiel. Un avenir.\par}
+  \vspace{2mm}{\color{gold}\rule{28mm}{1pt}}\par\vspace{3mm}
+  {\small Marrakech, du 29 au 31 octobre 2026.\par La finale, le jour de l'A\"id Al Wahda.\par}
+  \vspace{4mm}
+  {\sffamily\color{greenm}\textbf{Cit\'e de l'Innovation \textbullet\ Universit\'e Cadi Ayyad}}
+\end{frame}
+
+\end{document}
