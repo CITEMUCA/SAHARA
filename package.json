@@ -10,8 +10,9 @@
     "build:map": "python tools/build_map.py"
   },
   "engines": {
-    "node": ">=22.13"
+    "node": "22"
   },
+  "packageManager": "npm@10.9.2",
   "license": "UNLICENSED",
   "type": "commonjs",
   "dependencies": {

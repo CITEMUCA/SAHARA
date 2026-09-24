@@ -1,0 +1,13 @@
+node_modules
+data
+.env
+.git
+*.log
+*.pdf
+presentation
+tools
+.DS_Store
+Thumbs.db
+README.md
+CAHIER_DES_CHARGES.md
+agent-transcripts
