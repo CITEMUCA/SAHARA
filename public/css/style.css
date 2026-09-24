@@ -1673,7 +1673,7 @@ body.nav-open .burger span:nth-child(3) {
 }
 .keyq__text {
   margin: 0;
-  font-family: var(--font-serif);
+  font-family: Calibri, "Segoe UI", Candara, sans-serif;
   font-size: clamp(1.4rem, 2.6vw, 2.1rem);
   line-height: 1.35;
   color: #fff;

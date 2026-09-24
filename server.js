@@ -738,7 +738,9 @@ function parseReg(row) {
 
 function fillSheet(sheet, rows, subtitle) {
   const cols = buildExportColumns();
-  sheet.views = [{ state: "frozen", ySplit: 3, xSplit: 1 }];
+  const EVAL_QUESTION =
+    "Cette innovation répond-elle à un défi ou à une opportunité réelle et peut-elle raisonnablement créer de la valeur, être expérimentée, développée ou déployée dans les Provinces du Sud ?";
+  sheet.views = [{ state: "frozen", ySplit: 4, xSplit: 1 }];
   sheet.properties.defaultRowHeight = 18;
 
   sheet.mergeCells(1, 1, 1, cols.length);
@@ -757,7 +759,15 @@ function fillSheet(sheet, rows, subtitle) {
   sub.alignment = { vertical: "middle", indent: 1 };
   sheet.getRow(2).height = 22;
 
-  const header = sheet.getRow(3);
+  sheet.mergeCells(3, 1, 3, cols.length);
+  const q = sheet.getCell(3, 1);
+  q.value = `« ${EVAL_QUESTION} »`;
+  q.font = { name: "Calibri", size: 12, italic: true, color: { argb: "FFFFFFFF" } };
+  q.fill = { type: "pattern", pattern: "solid", fgColor: { argb: "FF1A3328" } };
+  q.alignment = { vertical: "middle", horizontal: "left", wrapText: true, indent: 1 };
+  sheet.getRow(3).height = 36;
+
+  const header = sheet.getRow(4);
   header.height = 32;
   cols.forEach((col, i) => {
     const cell = header.getCell(i + 1);
@@ -776,7 +786,7 @@ function fillSheet(sheet, rows, subtitle) {
 
   rows.forEach((raw, idx) => {
     const r = parseReg(raw);
-    const row = sheet.getRow(4 + idx);
+    const row = sheet.getRow(5 + idx);
     const cream = idx % 2 === 0;
     cols.forEach((col, i) => {
       const cell = row.getCell(i + 1);
@@ -817,8 +827,8 @@ function fillSheet(sheet, rows, subtitle) {
   });
 
   sheet.autoFilter = {
-    from: { row: 3, column: 1 },
-    to: { row: Math.max(3, 3 + rows.length), column: cols.length },
+    from: { row: 4, column: 1 },
+    to: { row: Math.max(4, 4 + rows.length), column: cols.length },
   };
 }
 
