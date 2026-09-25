@@ -10,7 +10,7 @@ window.SIC_I18N = {
       "1ʳᵉ édition du Moroccan Sahara Innovation Challenge, organisée par la Cité de l'Innovation de l'Université Cadi Ayyad. 6 challenges, 3 parcours IDEA · LAB · SCALE, du 29 au 31 octobre 2026 à Marrakech.",
 
     "ribbon.wahda": "31 octobre · Aïd Al Wahda, Fête de l'Unité",
-    "ribbon.march": "6 novembre · Glorieuse Marche Verte",
+    "ribbon.march": "31 octobre · Aïd Al Wahda, Fête de l'Unité",
 
     "nav.challenge": "Accueil",
     "nav.territory": "Territoire",
@@ -54,23 +54,23 @@ window.SIC_I18N = {
     "keydates.result.date": "29 octobre 2026",
 
     "occasion.kicker": "À l'occasion de",
-    "occasion.frame": "La Fête de l'Unité et la commémoration de la Marche Verte",
-    "occasion.card": "À l'occasion de la Fête de l'Unité et la commémoration de la Marche Verte",
+    "occasion.frame": "Aïd Al Wahda, Fête de l'Unité — 31 octobre",
+    "occasion.card": "À l'occasion de la Fête de l'Unité — Aïd Al Wahda, 31 octobre",
     "occasion.more": "Lire le texte",
-    "occasion.p1": "À l'occasion de « Aïd Al Wahda, Fête de l'Unité », célébré le 31 octobre, et de la commémoration, le 6 novembre, de la Glorieuse Marche Verte, la Cité de l'Innovation de l'Université Cadi Ayyad souhaite instituer un rendez-vous annuel consacré à l'innovation au service du développement des Provinces du Sud, à travers l'organisation de la première édition du « Moroccan Sahara Innovation Challenge », Innover pour les territoires • Révéler les potentialités • Façonner l'avenir.",
+    "occasion.p1": "À l'occasion de « Aïd Al Wahda, Fête de l'Unité », célébré le 31 octobre, la Cité de l'Innovation de l'Université Cadi Ayyad souhaite instituer un rendez-vous annuel consacré à l'innovation au service du développement des Provinces du Sud, à travers l'organisation de la première édition du « Moroccan Sahara Innovation Challenge », Innover pour les territoires • Révéler les potentialités • Façonner l'avenir.",
     "occasion.p2": "S'inscrivant dans cette séquence hautement symbolique, porteuse des valeurs d'unité, de mobilisation collective et d'attachement à l'intégrité territoriale du Royaume, le Sahara Innovation Challenge ambitionne de mobiliser étudiants, chercheurs, jeunes innovateurs, startups et porteurs de projets autour des défis, des potentialités et des opportunités qu'offre la dynamique de transformation des Provinces du Sud.",
     "occasion.p3": "Au-delà de sa portée commémorative, l'événement entend inscrire ces valeurs dans une dynamique résolument tournée vers l'avenir, fondée sur la connaissance, l'innovation, l'entrepreneuriat et la création de valeur.",
     "occasion.p4": "Les Provinces du Sud connaissent en effet une transformation profonde portée par le développement de grandes infrastructures, des énergies renouvelables, de l'économie bleue, de l'agriculture, du tourisme, du transport et de la logistique, ainsi que par leur ouverture croissante sur l'Afrique et l'espace atlantique. Le Port Dakhla Atlantique illustre particulièrement cette dynamique et les nouvelles perspectives qu'elle ouvre en matière de pêche, d'aquaculture, d'agriculture, d'énergie, de commerce, d'industrie et de logistique, mais également en matière d'intégration économique et d'ouverture sur l'Afrique et l'espace atlantique.",
     "unity.kicker": "Une séquence hautement symbolique",
     "unity.title": "L'unité, la mobilisation collective, l'avenir",
     "unity.sub":
-      "Organisé du 29 au 31 octobre, le Challenge est dédié à deux dates qui célèbrent les valeurs d'unité et d'attachement à l'intégrité territoriale du Royaume, pour les projeter dans une dynamique résolument tournée vers l'innovation.",
+      "Organisé du 29 au 31 octobre, le Challenge est dédié à l'Aïd Al Wahda, Fête de l'Unité, pour célébrer les valeurs d'unité et d'attachement à l'intégrité territoriale du Royaume, et les projeter dans une dynamique résolument tournée vers l'innovation.",
     "unity.wahda.date": "31 octobre",
     "unity.wahda.title": "Aïd Al Wahda, Fête de l'Unité",
     "unity.wahda.text": "La finale et la remise des prix se tiennent le jour même de la Fête de l'Unité.",
-    "unity.march.date": "6 novembre",
-    "unity.march.title": "Glorieuse Marche Verte",
-    "unity.march.text": "Le Challenge s'inscrit dans la séquence symbolique qui mène à la commémoration de la Marche Verte.",
+    "unity.march.date": "31 octobre",
+    "unity.march.title": "Aïd Al Wahda, Fête de l'Unité",
+    "unity.march.text": "La finale et la remise des prix se tiennent le jour même de la Fête de l'Unité.",
 
     "about.kicker": "Contexte & ambition",
     "about.title": "Faire des Provinces du Sud un véritable terrain d'innovation",
@@ -342,7 +342,7 @@ window.SIC_I18N = {
     ],
 
     "ambition.kicker": "Un rendez-vous annuel",
-    "ambition.title": "Chaque année, à l'occasion de l'Aïd Al Wahda et de la Marche Verte",
+    "ambition.title": "Chaque année, à l'occasion de l'Aïd Al Wahda",
     "ambition.text":
       "Le Moroccan Sahara Innovation Challenge a vocation à devenir un espace de référence pour détecter les talents et les innovations, valoriser les résultats de la recherche, stimuler l'entrepreneuriat, rapprocher innovateurs et investisseurs, et accompagner le déploiement de solutions à fort impact dans les Provinces du Sud.",
 
@@ -595,7 +595,7 @@ window.SIC_I18N = {
       "1st edition of the Moroccan Sahara Innovation Challenge, organized by the Innovation City of Cadi Ayyad University. 6 challenges, 3 tracks IDEA · LAB · SCALE, October 29 to 31, 2026 in Marrakech.",
 
     "ribbon.wahda": "October 31 · Aïd Al Wahda, Unity Day",
-    "ribbon.march": "November 6 · Glorious Green March",
+    "ribbon.march": "October 31 · Aïd Al Wahda, Unity Day",
 
     "nav.challenge": "Home",
     "nav.territory": "Territory",
@@ -639,23 +639,23 @@ window.SIC_I18N = {
     "keydates.result.date": "29 October 2026",
 
     "occasion.kicker": "On the occasion of",
-    "occasion.frame": "Unity Day and the commemoration of the Green March",
-    "occasion.card": "On the occasion of Unity Day and the commemoration of the Green March",
+    "occasion.frame": "Aïd Al Wahda, Unity Day — October 31",
+    "occasion.card": "On the occasion of Unity Day — Aïd Al Wahda, October 31",
     "occasion.more": "Read the text",
-    "occasion.p1": "On the occasion of Aïd Al Wahda, Unity Day, celebrated on 31 October, and of the commemoration on 6 November of the Glorious Green March, the Innovation City of Cadi Ayyad University wishes to establish an annual event dedicated to innovation for the development of the Southern Provinces, through the first edition of the Moroccan Sahara Innovation Challenge, Innovate for the territories • Reveal the potential • Shape the future.",
+    "occasion.p1": "On the occasion of Aïd Al Wahda, Unity Day, celebrated on 31 October, the Innovation City of Cadi Ayyad University wishes to establish an annual event dedicated to innovation for the development of the Southern Provinces, through the first edition of the Moroccan Sahara Innovation Challenge, Innovate for the territories • Reveal the potential • Shape the future.",
     "occasion.p2": "Set within this highly symbolic sequence, carrying the values of unity, collective mobilization and attachment to the Kingdom's territorial integrity, the Sahara Innovation Challenge aims to bring together students, researchers, young innovators, startups and project leaders around the challenges, potential and opportunities offered by the transformation of the Southern Provinces.",
     "occasion.p3": "Beyond its commemorative scope, the event sets these values in a dynamic resolutely turned towards the future, founded on knowledge, innovation, entrepreneurship and value creation.",
     "occasion.p4": "The Southern Provinces are undergoing a profound transformation, driven by major infrastructure, renewable energy, the blue economy, agriculture, tourism, transport and logistics, and by their growing openness to Africa and the Atlantic. The Dakhla Atlantic Port particularly illustrates this dynamic and the new prospects it opens for fisheries, aquaculture, agriculture, energy, trade, industry and logistics, as well as economic integration and openness to Africa and the Atlantic.",
     "unity.kicker": "A highly symbolic moment",
     "unity.title": "Unity, collective mobilization, the future",
     "unity.sub":
-      "Held from October 29 to 31, the Challenge is dedicated to two dates celebrating unity and attachment to the Kingdom's territorial integrity, projecting these values into a resolutely innovation-driven future.",
+      "Held from October 29 to 31, the Challenge is dedicated to Aïd Al Wahda, Unity Day, celebrating unity and attachment to the Kingdom's territorial integrity, and projecting these values into a resolutely innovation-driven future.",
     "unity.wahda.date": "October 31",
     "unity.wahda.title": "Aïd Al Wahda, Unity Day",
     "unity.wahda.text": "The final and awards ceremony take place on Unity Day itself.",
-    "unity.march.date": "November 6",
-    "unity.march.title": "Glorious Green March",
-    "unity.march.text": "The Challenge is part of the symbolic sequence leading to the Green March commemoration.",
+    "unity.march.date": "October 31",
+    "unity.march.title": "Aïd Al Wahda, Unity Day",
+    "unity.march.text": "The final and awards ceremony take place on Unity Day itself.",
 
     "about.kicker": "Context & ambition",
     "about.title": "Making the Southern Provinces a true land of innovation",
@@ -926,7 +926,7 @@ window.SIC_I18N = {
     ],
 
     "ambition.kicker": "An annual event",
-    "ambition.title": "Every year, on the occasion of Aïd Al Wahda and the Green March",
+    "ambition.title": "Every year, on the occasion of Aïd Al Wahda",
     "ambition.text":
       "The Moroccan Sahara Innovation Challenge aims to become a reference platform to detect talent and innovation, valorize research, stimulate entrepreneurship, connect innovators and investors, and support the deployment of high-impact solutions in the Southern Provinces.",
 
@@ -1175,7 +1175,7 @@ window.SIC_I18N = {
       "الدورة الأولى من تحدي الصحراء المغربية للابتكار، ينظمها مجمع الابتكار بجامعة القاضي عياض. 6 تحديات و3 مسارات IDEA · LAB · SCALE، من 29 إلى 31 أكتوبر 2026 بمراكش.",
 
     "ribbon.wahda": "31 أكتوبر · عيد الوحدة",
-    "ribbon.march": "6 نونبر · ذكرى المسيرة الخضراء المظفرة",
+    "ribbon.march": "31 أكتوبر · عيد الوحدة",
 
     "nav.challenge": "الاستقبال",
     "nav.territory": "المجال الترابي",
@@ -1219,23 +1219,23 @@ window.SIC_I18N = {
     "keydates.result.date": "29 أكتوبر 2026",
 
     "occasion.kicker": "بمناسبة",
-    "occasion.frame": "عيد الوحدة وتخليد ذكرى المسيرة الخضراء",
-    "occasion.card": "بمناسبة عيد الوحدة وتخليد ذكرى المسيرة الخضراء",
+    "occasion.frame": "عيد الوحدة — 31 أكتوبر",
+    "occasion.card": "بمناسبة عيد الوحدة — 31 أكتوبر",
     "occasion.more": "اقرأ النص",
-    "occasion.p1": "بمناسبة عيد الوحدة، المحتفى به يوم 31 أكتوبر، وتخليد ذكرى المسيرة الخضراء المظفرة يوم 6 نونبر، يرغب مجمع الابتكار بجامعة القاضي عياض في إرساء موعد سنوي مخصص للابتكار في خدمة تنمية الأقاليم الجنوبية، من خلال تنظيم الدورة الأولى لتحدي الصحراء للابتكار.",
+    "occasion.p1": "بمناسبة عيد الوحدة، المحتفى به يوم 31 أكتوبر، يرغب مجمع الابتكار بجامعة القاضي عياض في إرساء موعد سنوي مخصص للابتكار في خدمة تنمية الأقاليم الجنوبية، من خلال تنظيم الدورة الأولى لتحدي الصحراء المغربية للابتكار، الابتكار من أجل المجالات • كشف المؤهلات • صياغة المستقبل.",
     "occasion.p2": "يندرج التحدي في هذه المحطة الرمزية، الحاملة لقيم الوحدة والتعبئة الجماعية والتشبث بالوحدة الترابية للمملكة، ويطمح إلى تعبئة الطلبة والباحثين والمبتكرين الشباب والمقاولات الناشئة وحاملي المشاريع حول التحديات والمؤهلات والفرص التي تتيحها دينامية تحول الأقاليم الجنوبية.",
     "occasion.p3": "إلى جانب بعده التخليدي، يروم الحدث إسقاط هذه القيم على دينامية متجهة نحو المستقبل، قائمة على المعرفة والابتكار وريادة الأعمال وخلق القيمة.",
     "occasion.p4": "تعرف الأقاليم الجنوبية تحولاً عميقاً تحمله البنيات التحتية الكبرى والطاقات المتجددة والاقتصاد الأزرق والفلاحة والسياحة والنقل واللوجستيك، وكذا انفتاحها المتزايد على إفريقيا والفضاء الأطلسي. ويجسد ميناء الداخلة الأطلسي هذه الدينامية والآفاق التي يفتحها في الصيد وتربية الأحياء المائية والفلاحة والطاقة والتجارة والصناعة واللوجستيك، وفي الاندماج الاقتصادي والانفتاح على إفريقيا والأطلسي.",
     "unity.kicker": "محطة ذات رمزية عالية",
     "unity.title": "الوحدة، التعبئة الجماعية، المستقبل",
     "unity.sub":
-      "يُنظم التحدي من 29 إلى 31 أكتوبر، ويُهدى إلى تاريخين يحتفيان بقيم الوحدة والتشبث بالوحدة الترابية للمملكة، من أجل إسقاطها على دينامية متجهة بثبات نحو الابتكار.",
+      "يُنظم التحدي من 29 إلى 31 أكتوبر، ويُهدى إلى عيد الوحدة، احتفاءً بقيم الوحدة والتشبث بالوحدة الترابية للمملكة، من أجل إسقاطها على دينامية متجهة بثبات نحو الابتكار.",
     "unity.wahda.date": "31 أكتوبر",
     "unity.wahda.title": "عيد الوحدة",
     "unity.wahda.text": "يُنظم النهائي وحفل توزيع الجوائز في يوم عيد الوحدة نفسه.",
-    "unity.march.date": "6 نونبر",
-    "unity.march.title": "المسيرة الخضراء المظفرة",
-    "unity.march.text": "يندرج التحدي ضمن المسار الرمزي المؤدي إلى تخليد ذكرى المسيرة الخضراء.",
+    "unity.march.date": "31 أكتوبر",
+    "unity.march.title": "عيد الوحدة",
+    "unity.march.text": "يُنظم النهائي وحفل توزيع الجوائز في يوم عيد الوحدة نفسه.",
 
     "about.kicker": "السياق والطموح",
     "about.title": "جعل الأقاليم الجنوبية فضاءً حقيقياً للابتكار",
@@ -1506,7 +1506,7 @@ window.SIC_I18N = {
     ],
 
     "ambition.kicker": "موعد سنوي",
-    "ambition.title": "كل سنة، بمناسبة عيد الوحدة وذكرى المسيرة الخضراء",
+    "ambition.title": "كل سنة، بمناسبة عيد الوحدة",
     "ambition.text":
       "يطمح تحدي الصحراء المغربية للابتكار إلى أن يصبح فضاءً مرجعياً لرصد المواهب والابتكارات، وتثمين نتائج البحث العلمي، وتحفيز ريادة الأعمال، وتقريب المبتكرين من المستثمرين، ومواكبة نشر حلول ذات أثر قوي بالأقاليم الجنوبية.",
 
