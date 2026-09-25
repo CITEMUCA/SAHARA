@@ -341,7 +341,7 @@
       .flatMap((t) =>
         Object.keys(CHALLENGES).map(
           (n) =>
-            `<button type="button" class="btn btn--ghost btn--sm" data-track="${t}" data-challenge="${n}">${TRACKS[t][0]} · C${n}</button>`
+            `<button type="button" class="btn btn--outline btn--sm" data-track="${t}" data-challenge="${n}"><i class="fa-solid fa-file-excel"></i> ${TRACKS[t][0]} · C${n}</button>`
         )
       )
       .join("");

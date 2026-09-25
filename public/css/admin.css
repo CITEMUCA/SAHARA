@@ -77,6 +77,11 @@ button {
 .btn--ghost:hover {
   background: rgba(255, 255, 255, 0.15);
 }
+.btn--sm {
+  padding: 7px 12px;
+  font-size: 0.8rem;
+  border-radius: 10px;
+}
 .btn--link {
   background: none;
   border: 0;
