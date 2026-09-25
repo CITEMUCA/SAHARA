@@ -1178,6 +1178,7 @@ body.is-scrolled .occasion--banner {
   color: #d7dcf0;
   font-size: 0.72rem;
   line-height: 1.25;
+  font-weight: 700;
 }
 .countdown {
   margin-top: 0;
@@ -1293,6 +1294,11 @@ body.is-scrolled .occasion--banner {
   flex-wrap: wrap;
   justify-content: center;
 }
+.orgstrip__logos a {
+  display: inline-flex;
+  text-decoration: none;
+  color: inherit;
+}
 .orgstrip__logos img {
   height: 64px;
   width: auto;
@@ -1303,7 +1309,7 @@ body.is-scrolled .occasion--banner {
   background: #fff;
   transition: transform 0.3s;
 }
-.orgstrip__logos img:hover {
+.orgstrip__logos a:hover img {
   filter: none;
   transform: scale(1.04);
 }
@@ -1437,7 +1443,7 @@ body.is-scrolled .occasion--banner {
   margin-bottom: 8px;
 }
 .stat span {
-  font-weight: 500;
+  font-weight: 700;
   color: var(--ink-2);
   font-size: 0.95rem;
 }

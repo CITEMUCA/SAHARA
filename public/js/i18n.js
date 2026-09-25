@@ -357,6 +357,7 @@ window.SIC_I18N = {
     "org.cim": "Cité de l'Innovation, Université Cadi Ayyad",
     "org.uca": "Université Cadi Ayyad",
     "org.fssm": "Faculté des Sciences Semlalia",
+    "org.cite": "Cité de l'Innovation — Université Cadi Ayyad",
     "org.fstg": "Faculté des Sciences et Techniques de Marrakech",
 
     "form.kicker": "Candidature",
@@ -938,6 +939,7 @@ window.SIC_I18N = {
     "org.cim": "Innovation City, Cadi Ayyad University",
     "org.uca": "Cadi Ayyad University",
     "org.fssm": "Faculty of Sciences Semlalia",
+    "org.cite": "Innovation City — Cadi Ayyad University",
     "org.fstg": "Faculty of Sciences and Techniques of Marrakech",
 
     "form.kicker": "Application",
