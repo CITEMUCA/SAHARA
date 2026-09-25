@@ -367,9 +367,10 @@
 
             <div class="progress"><div class="progress__bar" id="progressBar"></div></div>
 
-            <!-- Pot de miel anti-robots -->
+            <!-- Pot de miel anti-robots (ne pas renommer en "website" : autofill navigateur) -->
             <div class="hp" aria-hidden="true">
-              <label>Website <input type="text" name="website_hp" tabindex="-1" autocomplete="off"></label>
+              <label for="sic_hp_field">Leave blank</label>
+              <input id="sic_hp_field" type="text" name="website_hp" value="" tabindex="-1" autocomplete="new-password" data-lpignore="true" data-1p-ignore="true" data-form-type="other">
             </div>
 
             <!-- ÉTAPE 1 : porteur -->

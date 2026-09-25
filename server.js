@@ -465,7 +465,8 @@ app.post(
 
     if (str(req.body.website_hp)) {
       cleanup();
-      return res.json({ ok: true, ref: makeRef() });
+      console.warn("[inscription] honeypot déclenché - candidature ignorée (possible autofill)");
+      return res.status(400).json({ ok: false, error: "validation", fields: { form: "invalid" } });
     }
     if (Date.now() >= REG_DEADLINE.getTime()) {
       cleanup();
@@ -475,6 +476,7 @@ app.post(
     const v = validateRegistration(req.body, req.file);
     if (Object.keys(v.errors).length) {
       cleanup();
+      console.warn("[inscription] validation échouée:", Object.keys(v.errors).join(", "));
       return res.status(422).json({ ok: false, error: "validation", fields: v.errors });
     }
 
@@ -520,7 +522,7 @@ app.post(
 
 app.post("/api/contact", rateLimit({ windowMs: 15 * 60 * 1000, max: 5 }), async (req, res) => {
   const b = req.body || {};
-  if (str(b.website_hp)) return res.json({ ok: true });
+  if (str(b.website_hp)) return res.status(400).json({ ok: false, error: "validation" });
   const name = str(b.name, 120);
   const email = str(b.email, 200).toLowerCase();
   const subject = str(b.subject, 150);

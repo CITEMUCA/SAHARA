@@ -544,7 +544,8 @@
       else if (k === "trl" && data.track !== "lab") continue;
       else fd.append(k, v);
     }
-    fd.append("website_hp", $('input[name="website_hp"]', form).value);
+    // Ne jamais envoyer la valeur autofill du pot de miel (label "Website" rempli par le navigateur).
+    fd.set("website_hp", "");
     fd.append("lang", SIC.lang);
     const parts = ($("#full_name").value || "").trim().split(/\s+/);
     fd.set("first_name", parts[0] || "");
