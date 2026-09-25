@@ -836,6 +836,22 @@ body.nav-open .burger span:nth-child(3) {
 /* Occasion — diagonal Maroc rouge/vert + texte doré + zellige */
 .occasion {
   --occasion-zellige: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='%23F4C95D' stroke-opacity='.5' stroke-width='1'%3E%3Crect x='16' y='16' width='24' height='24'/%3E%3Crect x='16' y='16' width='24' height='24' transform='rotate(45 28 28)'/%3E%3Ccircle cx='28' cy='28' r='5.5'/%3E%3Cpath d='M0 0L11 11M56 0L45 11M0 56L11 45M56 56L45 45'/%3E%3Cpath d='M28 2V10M28 46V54M2 28H10M46 28H54'/%3E%3C/g%3E%3C/svg%3E");
+  --occasion-a:
+    linear-gradient(
+      122deg,
+      rgba(27, 138, 75, 0.88) 0%,
+      rgba(27, 138, 75, 0.78) 46%,
+      rgba(193, 39, 45, 0.78) 54%,
+      rgba(193, 39, 45, 0.9) 100%
+    );
+  --occasion-b:
+    linear-gradient(
+      122deg,
+      rgba(193, 39, 45, 0.9) 0%,
+      rgba(193, 39, 45, 0.78) 46%,
+      rgba(27, 138, 75, 0.78) 54%,
+      rgba(27, 138, 75, 0.88) 100%
+    );
   position: relative;
   z-index: 3;
   isolation: isolate;
@@ -848,25 +864,14 @@ body.nav-open .burger span:nth-child(3) {
   color: #ffe7a8;
   border: 1px solid rgba(244, 201, 93, 0.55);
   border-radius: 18px;
-  background:
-    linear-gradient(
-      122deg,
-      rgba(27, 138, 75, 0.88) 0%,
-      rgba(27, 138, 75, 0.78) 46%,
-      rgba(193, 39, 45, 0.78) 54%,
-      rgba(193, 39, 45, 0.9) 100%
-    );
+  background: var(--occasion-a);
   box-shadow:
     0 14px 34px -14px rgba(10, 17, 40, 0.55),
     inset 0 1px 0 rgba(255, 255, 255, 0.22),
     inset 0 0 0 1px rgba(244, 201, 93, 0.14);
   backdrop-filter: blur(10px) saturate(1.1);
   -webkit-backdrop-filter: blur(10px) saturate(1.1);
-  transition:
-    background 0.45s var(--ease),
-    border-color 0.45s var(--ease),
-    box-shadow 0.45s var(--ease),
-    color 0.35s var(--ease);
+  animation: occasionSwap 2s ease-in-out infinite;
 }
 .occasion::before {
   content: "";
@@ -897,39 +902,31 @@ body.nav-open .burger span:nth-child(3) {
     radial-gradient(90% 70% at 12% 0%, rgba(255, 255, 255, 0.16), transparent 55%),
     radial-gradient(80% 60% at 100% 100%, rgba(0, 0, 0, 0.12), transparent 50%);
   pointer-events: none;
-  transition: opacity 0.45s var(--ease);
 }
 .occasion:hover {
   color: #ffefc2;
-  border-color: rgba(244, 201, 93, 0.65);
-  background:
-    linear-gradient(
-      122deg,
-      rgba(193, 39, 45, 0.9) 0%,
-      rgba(193, 39, 45, 0.78) 46%,
-      rgba(27, 138, 75, 0.78) 54%,
-      rgba(27, 138, 75, 0.88) 100%
-    );
+  border-color: rgba(244, 201, 93, 0.7);
   box-shadow:
     0 18px 40px -14px rgba(10, 17, 40, 0.6),
     inset 0 1px 0 rgba(255, 255, 255, 0.24),
     inset 0 0 0 1px rgba(244, 201, 93, 0.18);
 }
 .occasion:hover::before {
-  animation-direction: reverse;
   opacity: 0.85;
 }
-.occasion:hover::after {
-  background:
-    linear-gradient(
-      122deg,
-      transparent 42%,
-      rgba(244, 201, 93, 0.32) 49.5%,
-      rgba(244, 201, 93, 0.32) 50.5%,
-      transparent 58%
-    ),
-    radial-gradient(90% 70% at 12% 0%, rgba(255, 255, 255, 0.14), transparent 55%),
-    radial-gradient(80% 60% at 100% 100%, rgba(0, 0, 0, 0.1), transparent 50%);
+@keyframes occasionSwap {
+  0%,
+  45% {
+    background: var(--occasion-a);
+    color: #ffe7a8;
+    border-color: rgba(244, 201, 93, 0.55);
+  }
+  55%,
+  100% {
+    background: var(--occasion-b);
+    color: #ffefc2;
+    border-color: rgba(244, 201, 93, 0.65);
+  }
 }
 @keyframes occasionZellige {
   to {
@@ -954,9 +951,6 @@ body.nav-open .burger span:nth-child(3) {
 .occasion__mark .fa-star,
 .occasion__mark .fa-flag {
   color: inherit;
-}
-.occasion:hover .occasion__mark {
-  color: #ffe3a0;
 }
 .occasion__title {
   margin: 0;
