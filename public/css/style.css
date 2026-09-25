@@ -677,11 +677,12 @@ body.nav-open .burger span:nth-child(3) {
 .hero__tagline {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  font-size: clamp(1.05rem, 1.7vw, 1.65rem);
   color: var(--gold);
   margin-bottom: 14px;
-  max-width: 38rem;
+  max-width: none;
   line-height: 1.35;
+  white-space: nowrap;
 }
 [dir="rtl"] .hero__tagline {
   font-style: normal;
@@ -3927,6 +3928,10 @@ body.is-scrolled .occasion--banner {
   }
   :root {
     --header-h: 66px;
+  }
+  .hero__tagline {
+    white-space: normal;
+    font-size: clamp(1.05rem, 4.2vw, 1.25rem);
   }
   .ribbon {
     font-size: 0.7rem;
