@@ -50,6 +50,8 @@ window.SIC_I18N = {
     "keydates.close.date": "18 octobre 2026",
     "keydates.select": "Sélection des participants",
     "keydates.select.date": "22 octobre 2026",
+    "keydates.challenge": "Lancement du challenge",
+    "keydates.challenge.date": "26 octobre 2026",
     "keydates.result": "Clôture et remise des prix",
     "keydates.result.date": "31 octobre 2026",
 
@@ -635,6 +637,8 @@ window.SIC_I18N = {
     "keydates.close.date": "18 October 2026",
     "keydates.select": "Participant selection",
     "keydates.select.date": "22 October 2026",
+    "keydates.challenge": "Challenge launch",
+    "keydates.challenge.date": "26 October 2026",
     "keydates.result": "Closing & awards ceremony",
     "keydates.result.date": "31 October 2026",
 
@@ -1215,6 +1219,8 @@ window.SIC_I18N = {
     "keydates.close.date": "18 أكتوبر 2026",
     "keydates.select": "انتقاء المشاركين",
     "keydates.select.date": "22 أكتوبر 2026",
+    "keydates.challenge": "انطلاق التحدي",
+    "keydates.challenge.date": "26 أكتوبر 2026",
     "keydates.result": "الختام وتوزيع الجوائز",
     "keydates.result.date": "31 أكتوبر 2026",
 

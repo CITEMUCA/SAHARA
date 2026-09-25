@@ -1053,15 +1053,15 @@ body.is-scrolled .occasion--banner {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
   position: relative;
 }
 .hero-dates__list::before {
   content: "";
   position: absolute;
   top: 7px;
-  inset-inline: 12%;
+  inset-inline: 8%;
   height: 2px;
   background: linear-gradient(90deg, transparent, rgba(244, 201, 93, 0.55), transparent);
   pointer-events: none;
@@ -1074,7 +1074,8 @@ body.is-scrolled .occasion--banner {
   align-items: center;
   text-align: center;
   gap: 6px;
-  padding: 0 2px;
+  padding: 0 1px;
+  min-width: 0;
 }
 .hero-dates__dot {
   width: 14px;
@@ -1086,13 +1087,13 @@ body.is-scrolled .occasion--banner {
   flex-shrink: 0;
 }
 .hero-dates__label {
-  font-size: 0.72rem;
+  font-size: 0.66rem;
   font-weight: 700;
   line-height: 1.25;
   color: #fff;
 }
 .hero-dates__date {
-  font-size: 0.7rem;
+  font-size: 0.64rem;
   font-weight: 600;
   line-height: 1.25;
   color: var(--gold);
