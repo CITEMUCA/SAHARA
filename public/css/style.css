@@ -837,22 +837,10 @@ body.nav-open .burger span:nth-child(3) {
 /* Occasion — diagonal Maroc rouge/vert + texte doré + zellige */
 .occasion {
   --occasion-zellige: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='%23F4C95D' stroke-opacity='.5' stroke-width='1'%3E%3Crect x='16' y='16' width='24' height='24'/%3E%3Crect x='16' y='16' width='24' height='24' transform='rotate(45 28 28)'/%3E%3Ccircle cx='28' cy='28' r='5.5'/%3E%3Cpath d='M0 0L11 11M56 0L45 11M0 56L11 45M56 56L45 45'/%3E%3Cpath d='M28 2V10M28 46V54M2 28H10M46 28H54'/%3E%3C/g%3E%3C/svg%3E");
-  --occasion-a:
-    linear-gradient(
-      122deg,
-      rgba(27, 138, 75, 0.88) 0%,
-      rgba(27, 138, 75, 0.78) 46%,
-      rgba(193, 39, 45, 0.78) 54%,
-      rgba(193, 39, 45, 0.9) 100%
-    );
-  --occasion-b:
-    linear-gradient(
-      122deg,
-      rgba(193, 39, 45, 0.9) 0%,
-      rgba(193, 39, 45, 0.78) 46%,
-      rgba(27, 138, 75, 0.78) 54%,
-      rgba(27, 138, 75, 0.88) 100%
-    );
+  --green-fill: rgba(27, 138, 75, 0.92);
+  --red-fill: rgba(193, 39, 45, 0.92);
+  --green-stroke: #1b8a4b;
+  --red-stroke: #c1272d;
   position: relative;
   z-index: 3;
   isolation: isolate;
@@ -863,13 +851,12 @@ body.nav-open .burger span:nth-child(3) {
   text-align: start;
   cursor: pointer;
   color: #ffe7a8;
-  border: 1px solid rgba(244, 201, 93, 0.55);
+  border: 2.5px solid var(--red-stroke);
   border-radius: 18px;
-  background: var(--occasion-a);
+  background: var(--green-fill);
   box-shadow:
     0 14px 34px -14px rgba(10, 17, 40, 0.55),
-    inset 0 1px 0 rgba(255, 255, 255, 0.22),
-    inset 0 0 0 1px rgba(244, 201, 93, 0.14);
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
   backdrop-filter: blur(10px) saturate(1.1);
   -webkit-backdrop-filter: blur(10px) saturate(1.1);
   animation: occasionSwap 2s ease-in-out infinite;
@@ -893,24 +880,15 @@ body.nav-open .burger span:nth-child(3) {
   inset: 0;
   z-index: 0;
   background:
-    linear-gradient(
-      122deg,
-      transparent 42%,
-      rgba(244, 201, 93, 0.28) 49.5%,
-      rgba(244, 201, 93, 0.28) 50.5%,
-      transparent 58%
-    ),
     radial-gradient(90% 70% at 12% 0%, rgba(255, 255, 255, 0.16), transparent 55%),
     radial-gradient(80% 60% at 100% 100%, rgba(0, 0, 0, 0.12), transparent 50%);
   pointer-events: none;
 }
 .occasion:hover {
   color: #ffefc2;
-  border-color: rgba(244, 201, 93, 0.7);
   box-shadow:
     0 18px 40px -14px rgba(10, 17, 40, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.24),
-    inset 0 0 0 1px rgba(244, 201, 93, 0.18);
+    inset 0 1px 0 rgba(255, 255, 255, 0.24);
 }
 .occasion:hover::before {
   opacity: 0.85;
@@ -918,15 +896,17 @@ body.nav-open .burger span:nth-child(3) {
 @keyframes occasionSwap {
   0%,
   45% {
-    background: var(--occasion-a);
+    /* Trait rouge, rempli vert */
+    background: var(--green-fill);
+    border-color: var(--red-stroke);
     color: #ffe7a8;
-    border-color: rgba(244, 201, 93, 0.55);
   }
   55%,
   100% {
-    background: var(--occasion-b);
+    /* Trait vert, rempli rouge (inverse) */
+    background: var(--red-fill);
+    border-color: var(--green-stroke);
     color: #ffefc2;
-    border-color: rgba(244, 201, 93, 0.65);
   }
 }
 @keyframes occasionZellige {
@@ -2584,9 +2564,11 @@ body.is-scrolled .occasion--banner {
   border: 1px solid var(--line);
   box-shadow: var(--shadow-sm);
   text-align: center;
+  text-decoration: none;
+  color: inherit;
   transition: transform 0.3s var(--ease), box-shadow 0.3s;
 }
-.org:hover {
+a.org:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow);
 }
@@ -2596,6 +2578,7 @@ body.is-scrolled .occasion--banner {
   max-width: 100%;
   object-fit: contain;
 }
+.org span,
 .org figcaption {
   font-size: 0.82rem;
   font-weight: 600;
@@ -2814,16 +2797,42 @@ body.is-scrolled .occasion--banner {
 }
 .field--full { grid-column: 1 / -1; }
 .field-hint { margin: 0 0 14px; color: var(--ink-soft); }
+.team-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0 0 14px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(193, 39, 45, 0.35);
+  background: rgba(27, 138, 75, 0.08);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+.team-notice i {
+  color: var(--copper);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
 .team-size {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 16px;
+  flex-wrap: wrap;
 }
 .team-size input {
   width: 64px;
   text-align: center;
   font-weight: 700;
+}
+.team-size__cap {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--copper);
+  letter-spacing: 0.02em;
 }
 .grid-3 {
   display: grid;
