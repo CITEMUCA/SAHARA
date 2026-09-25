@@ -30,7 +30,7 @@
       researcher: "Enseignant-chercheur",
       startup: "Startup / Entrepreneur(e)",
     },
-    level: { master: "Master", doctorate: "Doctorat", engineer: "Cycle d'ingénieur" },
+    level: { licence: "Licence", master: "Master", doctorate: "Doctorat", engineer: "Cycle d'ingénieur" },
   };
 
   let token = sessionStorage.getItem(TOKEN_KEY);

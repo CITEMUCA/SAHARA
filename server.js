@@ -336,7 +336,7 @@ function validateRegistration(body, file) {
   leader.study_level = str(body.study_level, 20);
   leader.training_title = str(body.training_title, 160);
   if (leader.profile === "student") {
-    req("study_level", leader.study_level, ["master", "doctorate", "engineer"].includes(leader.study_level));
+    req("study_level", leader.study_level, ["licence", "master", "doctorate", "engineer"].includes(leader.study_level));
     req("training_title", leader.training_title, leader.training_title.length >= 2);
   }
   if (leader.linkedin) req("linkedin", leader.linkedin, isUrl(leader.linkedin));
@@ -666,7 +666,7 @@ const PROFILE_LABELS = {
   student: "Étudiant(e)",
   startup: "Startup / Entrepreneur(e)",
 };
-const LEVEL_LABELS = { master: "Master", doctorate: "Doctorat", engineer: "Cycle d'ingénieur" };
+const LEVEL_LABELS = { licence: "Licence", master: "Master", doctorate: "Doctorat", engineer: "Cycle d'ingénieur" };
 const STATUS_LABELS = {
   received: "Reçue",
   review: "En évaluation",
