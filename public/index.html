@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Reem+Kufi:wght@500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="/css/style.css?v=form17">
+  <link rel="stylesheet" href="/css/style.css?v=form24">
 </head>
 <body>
   <a class="skip-link" href="#main">Aller au contenu</a>
@@ -67,6 +67,11 @@
     </div>
   </header>
 
+  <button type="button" class="occasion occasion--banner" data-open-story>
+    <span class="occasion__mark" aria-hidden="true"><i class="fa-solid fa-star"></i><i class="fa-solid fa-flag"></i></span>
+    <p class="occasion__title" data-i18n="occasion.card"></p>
+  </button>
+
   <main id="main">
     <!-- HERO -->
     <section class="hero" id="top">
@@ -101,10 +106,6 @@
             <div class="chip chip--a"><i class="fa-solid fa-layer-group"></i> 6 Challenges</div>
             <div class="chip chip--b"><i class="fa-solid fa-route"></i> IDEA · LAB · SCALE</div>
           </div>
-          <button type="button" class="occasion" data-open-story>
-            <span class="occasion__mark" aria-hidden="true"><i class="fa-solid fa-star"></i><i class="fa-solid fa-flag"></i></span>
-            <p class="occasion__title" data-i18n="occasion.card"></p>
-          </button>
           <aside class="hero-dates" aria-labelledby="hero-dates-title">
             <header class="hero-dates__head">
               <i class="fa-regular fa-calendar" aria-hidden="true"></i>
@@ -151,7 +152,7 @@
             <div class="stat"><strong data-count="6">0</strong><span data-i18n="stat.challenges"></span></div>
             <div class="stat"><strong data-count="3">0</strong><span data-i18n="stat.tracks"></span></div>
             <div class="stat"><strong data-count="11">0</strong><span data-i18n="stat.prizes"></span></div>
-            <div class="stat"><strong data-count="1">0</strong><span data-i18n="stat.year"></span></div>
+            <div class="stat"><strong data-count="3">0</strong><span data-i18n="stat.year"></span></div>
           </div>
         </div>
       </div>

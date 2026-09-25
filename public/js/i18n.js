@@ -80,11 +80,11 @@ window.SIC_I18N = {
       "Grandes infrastructures, énergies renouvelables, économie bleue, agriculture, tourisme, transport et logistique, ouverture sur l'Afrique et l'espace atlantique : les Provinces du Sud connaissent une transformation profonde. Le Port Dakhla Atlantique en est l'illustration la plus forte.",
     "about.p3":
       "Au-delà de sa portée commémorative, le Challenge mobilise étudiants, chercheurs, jeunes innovateurs, startups et porteurs de projets autour d'une dynamique fondée sur la connaissance, l'innovation, l'entrepreneuriat et la création de valeur.",
-    "stat.challenges": "grands challenges thématiques",
-    "stat.tracks": "parcours de maturité",
-    "stat.days": "jours de Challenge à Marrakech",
-    "stat.prizes": "prix & distinctions",
-    "stat.year": "accompagnement post-challenge",
+    "stat.challenges": "Grands challenges thématiques",
+    "stat.tracks": "Parcours de maturité",
+    "stat.days": "Jours de Challenge à Marrakech",
+    "stat.prizes": "Prix & distinctions",
+    "stat.year": "Accompagnement post-challenge",
 
     "territory.kicker": "Un territoire",
     "territory.title": "Le Royaume, de Tanger à Lagouira",
@@ -660,11 +660,11 @@ window.SIC_I18N = {
       "Major infrastructure, renewable energy, blue economy, agriculture, tourism, transport and logistics, openness to Africa and the Atlantic: the Southern Provinces are undergoing a profound transformation. The Dakhla Atlantic Port is its most striking illustration.",
     "about.p3":
       "Beyond its commemorative dimension, the Challenge brings together students, researchers, young innovators, startups and project leaders around knowledge, innovation, entrepreneurship and value creation.",
-    "stat.challenges": "thematic challenges",
-    "stat.tracks": "maturity tracks",
-    "stat.days": "days of Challenge in Marrakech",
-    "stat.prizes": "prizes & awards",
-    "stat.year": "post-challenge support",
+    "stat.challenges": "Thematic challenges",
+    "stat.tracks": "Maturity tracks",
+    "stat.days": "Days of Challenge in Marrakech",
+    "stat.prizes": "Prizes & awards",
+    "stat.year": "Post-challenge support",
 
     "territory.kicker": "One territory",
     "territory.title": "The Kingdom, from Tangier to Lagouira",
