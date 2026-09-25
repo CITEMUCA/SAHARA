@@ -290,7 +290,7 @@ window.SIC_I18N = {
     "dates.close": "Clôture des candidatures",
     "dates.closeWhen": "18 octobre 2026, 23h59",
     "programme.title": "Trois jours pour passer de l'idée au pitch",
-    "programme.sub": "La finale aura lieu le jour de l'Aïd Al Wahda.",
+    "programme.sub": "Du jeudi 29 au samedi 31 octobre 2026 à Marrakech.<br>La finale aura lieu le jour de l'Aïd Al Wahda.",
     "programme.mode": "Modalité",
     "programme.goal": "Objectif",
     programme: [
@@ -874,7 +874,7 @@ window.SIC_I18N = {
     "dates.close": "Applications close",
     "dates.closeWhen": "18 October 2026, 11:59 pm",
     "programme.title": "Three days from idea to pitch",
-    "programme.sub": "The final will take place on Aïd Al Wahda.",
+    "programme.sub": "Thursday October 29 to Saturday October 31, 2026 in Marrakech.<br>The final will take place on Aïd Al Wahda.",
     "programme.mode": "Format",
     "programme.goal": "Goal",
     programme: [
@@ -1454,7 +1454,7 @@ window.SIC_I18N = {
     "dates.close": "إغلاق الترشيحات",
     "dates.closeWhen": "18 أكتوبر 2026، 23:59",
     "programme.title": "ثلاثة أيام من الفكرة إلى العرض",
-    "programme.sub": "سيُقام النهائي يوم عيد الوحدة.",
+    "programme.sub": "من الخميس 29 إلى السبت 31 أكتوبر 2026 بمراكش.<br>سيُقام النهائي يوم عيد الوحدة.",
     "programme.mode": "الصيغة",
     "programme.goal": "الهدف",
     programme: [
