@@ -321,7 +321,7 @@ function validateRegistration(body, file) {
     gender: str(body.gender, 20),
     city: str(body.city, 80),
     profile: str(body.profile, 30),
-    institution: str(body.institution, 200),
+    institution: str(body.institution, 200) || str(body.institution_other, 200),
     position: str(body.position, 120),
     linkedin: str(body.linkedin, 300),
   };
@@ -330,9 +330,11 @@ function validateRegistration(body, file) {
   req("email", leader.email, isEmail(leader.email));
   req("phone", leader.phone, isPhone(leader.phone));
   req("city", leader.city);
-  req("institution", leader.institution);
   const PROFILES = ["researcher", "student", "startup"];
   req("profile", leader.profile, PROFILES.includes(leader.profile));
+  if (leader.profile === "student" || leader.profile === "researcher") {
+    req("institution", leader.institution, leader.institution.length >= 2);
+  }
   leader.study_level = str(body.study_level, 20);
   leader.training_title = str(body.training_title, 160);
   if (leader.profile === "student") {
@@ -348,15 +350,24 @@ function validateRegistration(body, file) {
       name: str(m && m.name, 120),
       email: str(m && m.email, 200).toLowerCase(),
       role: str(m && m.role, 120),
-      institution: str(m && m.institution, 200),
+      institution: str(m && (m.institution || m.institution_other), 200),
       profile: str(m && m.profile, 20),
       study_level: str(m && m.study_level, 20),
       training_title: str(m && m.training_title, 160),
+      startup_name: str(m && m.startup_name, 150),
     }))
     .filter((m) => m.name);
   req("team_size", teamSize, teamSize >= 1 && teamSize <= 5);
   members.forEach((m, i) => {
     if (m.email && !isEmail(m.email)) errors[`member_${i}_email`] = "invalid";
+    if (m.profile === "student" || m.profile === "researcher") {
+      if (!m.institution) errors[`member_${i}_institution`] = "invalid";
+    }
+    if (m.profile === "student") {
+      if (!["licence", "master", "doctorate", "engineer"].includes(m.study_level)) errors[`member_${i}_study_level`] = "invalid";
+      if (!m.training_title) errors[`member_${i}_training_title`] = "invalid";
+    }
+    if (m.profile === "startup" && !m.startup_name) errors[`member_${i}_startup_name`] = "invalid";
   });
 
   const project = {
@@ -384,6 +395,9 @@ function validateRegistration(body, file) {
     needs: asArray(parseJsonField(body.needs, [])).filter((n) => NEEDS.includes(n)),
     heard_from: str(body.heard_from, 60),
   };
+  if (leader.profile === "startup") {
+    req("startup_name", project.startup_name, project.startup_name.length >= 2);
+  }
   req("track", project.track, TRACKS.includes(project.track));
   req("challenge", project.challenge, CHALLENGES.includes(project.challenge));
   req("title", project.title, project.title.length >= 3);

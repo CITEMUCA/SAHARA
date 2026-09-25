@@ -15,7 +15,7 @@
   const EMAIL_RE = /^[^\s@]{1,64}@[^\s@]{1,190}\.[^\s@]{2,}$/;
   const PHONE_RE = /^\+?[0-9 ().-]{8,20}$/;
   const FIELD_STEP = {
-    full_name: 1, email: 1, phone: 1, institution: 1, uni_group: 1, city: 1, profile: 1, study_level: 1, training_title: 1,
+    full_name: 1, email: 1, phone: 1, institution: 1, institution_other: 1, uni_group: 1, city: 1, profile: 1, study_level: 1, training_title: 1, startup_name: 1,
     track: 2, challenge: 2, title: 2, acronym: 2, summary: 2, problem: 2,
     team_size: 3,
     consent_rules: 4, consent_data: 4, consent_media: 4,
@@ -84,15 +84,58 @@
     return el ? el.value : "";
   }
 
+  const AUTRE_INST = "__autre__";
+
+  function profileAllowed(box, profile) {
+    const allowed = (box.dataset.showFor || "")
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+    return allowed.includes(profile);
+  }
+
+  function isAutreInstitution(value) {
+    return value === AUTRE_INST || value === "autre";
+  }
+
   function updateConditional() {
     const profile = selectedValue("profile");
     $$(".conditional", form).forEach((box) => {
-      box.classList.toggle("is-shown", box.dataset.showFor === profile);
+      if (box.closest(".member")) return;
+      box.classList.toggle("is-shown", profileAllowed(box, profile));
     });
+    const academic = profile === "student" || profile === "researcher";
     const student = profile === "student";
-    $$("#studentBox input", form).forEach((input) => {
-      input.required = student && input.name === "training_title";
-    });
+    const startup = profile === "startup";
+    const group = ($("#uni_group") || {}).value || "";
+    const instValue = ($("#institution") || {}).value || "";
+    const showSelect = academic && (group === "uca" || group === "other");
+    const showOther = showSelect && isAutreInstitution(instValue);
+
+    const uniGroup = $("#uni_group");
+    const institution = $("#institution");
+    const institutionOther = $("#institution_other");
+    const institutionWrap = $("#institutionWrap");
+    const institutionOtherWrap = $("#institutionOtherWrap");
+    const training = $("#training_title");
+    const startupName = $("#startup_name");
+
+    if (uniGroup) uniGroup.required = academic;
+    if (institutionWrap) {
+      institutionWrap.hidden = !showSelect;
+      institutionWrap.style.display = showSelect ? "" : "none";
+    }
+    if (institutionOtherWrap) {
+      institutionOtherWrap.hidden = !showOther;
+      institutionOtherWrap.style.display = showOther ? "" : "none";
+    }
+    if (institution) institution.required = showSelect;
+    if (institutionOther) {
+      institutionOther.required = showOther;
+      if (!showOther) institutionOther.value = "";
+    }
+    if (training) training.required = student;
+    if (startupName) startupName.required = startup;
   }
 
   /* ------------------------------------------------------------------ */
@@ -103,19 +146,28 @@
     $$(".member", els.members).forEach((box, i) => {
       members[i] = {
         name: $("[data-m=name]", box).value,
-        uni: $("[data-m=uni]", box).value,
-        institution: $("[data-m=institution]", box).value,
+        uni: ($("[data-m=uni]", box) || {}).value || "",
+        institution: ($("[data-m=institution]", box) || {}).value || "",
+        institution_other: ($("[data-m=institution_other]", box) || {}).value || "",
         profile: ($("input[data-m=profile]:checked", box) || {}).value || "",
         study_level: ($("input[data-m=study_level]:checked", box) || {}).value || "",
         training_title: ($("[data-m=training]", box) || {}).value || "",
+        startup_name: ($("[data-m=startup_name]", box) || {}).value || "",
       };
     });
   }
 
   function memberOptions(group, current) {
     const list = group === "uca" ? UCA : group === "other" ? OTHER : [];
-    const opts = [`<option value="">${esc(SIC.t("form.choose"))}</option>`].concat(list.map((name) => `<option value="${esc(name)}"${name === current ? " selected" : ""}>${esc(name)}</option>`));
+    const opts = [`<option value="">${esc(SIC.t("form.choose"))}</option>`]
+      .concat(list.map((name) => `<option value="${esc(name)}"${name === current ? " selected" : ""}>${esc(name)}</option>`))
+      .concat([`<option value="${AUTRE_INST}"${isAutreInstitution(current) ? " selected" : ""}>${esc(SIC.t("f.uni.autre"))}</option>`]);
     return { list, html: opts.join("") };
+  }
+
+  function memberInstitutionLabel(m) {
+    if (isAutreInstitution(m.institution)) return (m.institution_other || "").trim();
+    return (m.institution || "").trim();
   }
 
   function renderMembers() {
@@ -123,11 +175,17 @@
     const size = Number(els.teamSize.value);
     const count = Math.max(0, size - 1);
     members = members.slice(0, count);
-    while (members.length < count) members.push({ name: "", uni: "", institution: "", profile: "", study_level: "", training_title: "" });
+    while (members.length < count) {
+      members.push({ name: "", uni: "", institution: "", institution_other: "", profile: "", study_level: "", training_title: "", startup_name: "" });
+    }
     els.members.innerHTML = members
       .map((m, i) => {
-        const built = memberOptions(m.uni, m.institution);
+        const academic = m.profile === "student" || m.profile === "researcher";
         const student = m.profile === "student";
+        const startup = m.profile === "startup";
+        const showSelect = academic && (m.uni === "uca" || m.uni === "other");
+        const showOther = showSelect && isAutreInstitution(m.institution);
+        const built = memberOptions(m.uni, m.institution);
         const pill = (value, label) => `<label class="pill"><input type="radio" data-m="profile" name="mprofile${i}" value="${value}" ${m.profile === value ? "checked" : ""}><span>${esc(label)}</span></label>`;
         const level = (value, label) => `<label class="pill"><input type="radio" data-m="study_level" name="mlevel${i}" value="${value}" ${m.study_level === value ? "checked" : ""}><span>${esc(label)}</span></label>`;
         return `<div class="member">
@@ -137,34 +195,48 @@
             <div class="field field--full">
               <label>${esc(SIC.t("f.profile"))} *</label>
               <div class="pills">
-                ${pill("researcher", SIC.t("f.profile.researcher"))}
                 ${pill("student", SIC.t("f.profile.student"))}
+                ${pill("researcher", SIC.t("f.profile.researcher"))}
                 ${pill("startup", SIC.t("f.profile.startup"))}
               </div>
             </div>
-            <div class="conditional field--full ${student ? "is-shown" : ""}" data-member-student>
+          </div>
+          <div class="conditional ${academic ? "is-shown" : ""}" data-member-academic>
+            <div class="grid-2">
               <div class="field">
-                <label>${esc(SIC.t("f.study_level"))} *</label>
-                <div class="pills">
-                  ${level("licence", SIC.t("f.level.licence"))}
-                  ${level("master", SIC.t("f.level.master"))}
-                  ${level("doctorate", SIC.t("f.level.doctorate"))}
-                  ${level("engineer", SIC.t("f.level.engineer"))}
-                </div>
+                <label>${esc(SIC.t("f.establishment"))} *</label>
+                <select data-m="uni" ${academic ? "required" : ""}>
+                  <option value="">${esc(SIC.t("form.choose"))}</option>
+                  <option value="uca"${m.uni === "uca" ? " selected" : ""}>${esc(SIC.t("f.uni.uca"))}</option>
+                  <option value="other"${m.uni === "other" ? " selected" : ""}>${esc(SIC.t("f.uni.other"))}</option>
+                </select>
               </div>
-              <div class="field"><label>${esc(SIC.t("f.training"))} *</label><input data-m="training" value="${esc(m.training_title || "")}" maxlength="160" ${student ? "required" : ""}></div>
+              <div class="field"${showSelect ? "" : " hidden"}>
+                <label>${esc(SIC.t("f.establishment_name"))} *</label>
+                <select data-m="institution" ${showSelect ? "required" : ""} ${built.list.length || showSelect ? "" : "disabled"}>${built.html}</select>
+              </div>
+              <div class="field field--full"${showOther ? "" : " hidden"}>
+                <label>${esc(SIC.t("f.establishment_other"))} *</label>
+                <input data-m="institution_other" value="${esc(m.institution_other || "")}" maxlength="200" placeholder="${esc(SIC.t("f.establishment_other.ph"))}" ${showOther ? "required" : ""}>
+              </div>
             </div>
+          </div>
+          <div class="conditional ${student ? "is-shown" : ""}" data-member-student>
             <div class="field">
-              <label>${esc(SIC.t("f.establishment"))} *</label>
-              <select data-m="uni" required>
-                <option value="">${esc(SIC.t("form.choose"))}</option>
-                <option value="uca"${m.uni === "uca" ? " selected" : ""}>${esc(SIC.t("f.uni.uca"))}</option>
-                <option value="other"${m.uni === "other" ? " selected" : ""}>${esc(SIC.t("f.uni.other"))}</option>
-              </select>
+              <label>${esc(SIC.t("f.study_level"))} *</label>
+              <div class="pills">
+                ${level("licence", SIC.t("f.level.licence"))}
+                ${level("master", SIC.t("f.level.master"))}
+                ${level("doctorate", SIC.t("f.level.doctorate"))}
+                ${level("engineer", SIC.t("f.level.engineer"))}
+              </div>
             </div>
-            <div class="field">
-              <label>${esc(SIC.t("f.establishment_name"))} *</label>
-              <select data-m="institution" required ${built.list.length ? "" : "disabled"}>${built.html}</select>
+            <div class="field"><label>${esc(SIC.t("f.training"))} *</label><input data-m="training" value="${esc(m.training_title || "")}" maxlength="160" ${student ? "required" : ""}></div>
+          </div>
+          <div class="conditional ${startup ? "is-shown" : ""}" data-member-startup>
+            <div class="field field--full">
+              <label>${esc(SIC.t("f.startup_name"))} *</label>
+              <input data-m="startup_name" value="${esc(m.startup_name || "")}" maxlength="150" placeholder="${esc(SIC.t("f.startup_name.ph"))}" ${startup ? "required" : ""}>
             </div>
           </div>
         </div>`;
@@ -286,6 +358,7 @@
     let ok = true;
     $$("input, select, textarea", box).forEach((input) => {
       if (input.type === "radio" || input.name === "territories" || input.name === "needs" || input.type === "file") return;
+      if (input.disabled || input.closest("[hidden]")) return;
       if (input.closest(".conditional") && !input.closest(".conditional").classList.contains("is-shown")) return;
       if (input.closest(".hp")) return;
       if (!validateInput(input)) ok = false;
@@ -295,8 +368,8 @@
       ok = false;
     } else if (n === 1) clearError($("#profileField"));
     if (n === 1 && selectedValue("profile") === "student" && !selectedValue("study_level")) {
-      const box = $("#studentBox .field");
-      setError(box, SIC.t("err.required"));
+      const studyField = $("#studentBox .field");
+      setError(studyField, SIC.t("err.required"));
       ok = false;
     }
     if (n === 3) {
@@ -358,20 +431,35 @@
     if (scroll) $("#formCard").scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
+  function leaderInstitution() {
+    const inst = ($("#institution") || {}).value || "";
+    if (isAutreInstitution(inst)) return ($("#institution_other") || {}).value || "";
+    return inst;
+  }
+
   function renderRecap() {
     const d = SIC.dict();
     const track = d.tracks.find((t) => t.key === selectedValue("track"));
     const ch = d.challenges.find((c) => String(c.n) === selectedValue("challenge"));
+    const profile = selectedValue("profile");
     const rows = [
       [SIC.t("f.full_name"), $("#full_name").value],
       [SIC.t("f.email"), $("#email").value],
-      [SIC.t("f.establishment"), $("#institution").value],
+      [SIC.t("f.profile"), SIC.t(`f.profile.${profile}`) || profile],
       [SIC.t("f.city"), $("#city").value],
+    ];
+    if (profile === "student" || profile === "researcher") {
+      rows.push([SIC.t("f.establishment"), leaderInstitution()]);
+    }
+    if (profile === "startup") {
+      rows.push([SIC.t("f.startup_name"), ($("#startup_name") || {}).value || ""]);
+    }
+    rows.push(
       [SIC.t("f.title"), $("#title").value],
       [SIC.t("f.track"), track ? `${track.key.toUpperCase()} · ${track.tagline}` : ""],
       [SIC.t("f.challenge"), ch ? `${ch.n}. ${ch.title}` : ""],
-      [SIC.t("f.team_size"), $("#team_size").value],
-    ];
+      [SIC.t("f.team_size"), $("#team_size").value]
+    );
     $("#recap").innerHTML = `<h4><i class="fa-solid fa-list-check" aria-hidden="true"></i> ${esc(SIC.t("form.recap"))}</h4>
       <dl>${rows.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v || "-")}</dd></div>`).join("")}</dl>`;
   }
@@ -457,6 +545,18 @@
     const parts = ($("#full_name").value || "").trim().split(/\s+/);
     fd.set("first_name", parts[0] || "");
     fd.set("last_name", parts.slice(1).join(" ") || parts[0] || "");
+    const inst = leaderInstitution().trim();
+    if (inst) fd.set("institution", inst);
+    else fd.delete("institution");
+    const membersPayload = (data.members || []).map((m) => ({
+      name: m.name,
+      profile: m.profile,
+      study_level: m.study_level,
+      training_title: m.training_title,
+      institution: memberInstitutionLabel(m),
+      startup_name: m.startup_name || "",
+    }));
+    fd.set("members", JSON.stringify(membersPayload));
     if (file) fd.append("project_file", file, file.name);
     return fd;
   }
@@ -582,7 +682,7 @@
     saveDraft();
   });
   form.addEventListener("change", (e) => {
-    if (e.target.name === "profile" || e.target.name === "uni_group") updateConditional();
+    if (e.target.name === "profile" || e.target.name === "uni_group" || e.target.name === "institution") updateConditional();
     if (e.target.name === "track" || e.target.name === "challenge") clearError(e.target.closest(".field"));
     if (e.target.name === "territories") {
       clearError($("#territoriesField"));
@@ -605,22 +705,14 @@
   );
   if (els.members) {
     els.members.addEventListener("change", (e) => {
-      if (e.target.dataset.m === "profile") {
-        const box = e.target.closest(".member");
-        const student = e.target.value === "student";
-        const extra = $("[data-member-student]", box);
-        extra.classList.toggle("is-shown", student);
-        const training = $("[data-m=training]", box);
-        if (training) training.required = student;
+      const box = e.target.closest(".member");
+      if (!box) return;
+      if (e.target.dataset.m === "profile" || e.target.dataset.m === "uni" || e.target.dataset.m === "institution") {
         syncMembersFromDom();
+        renderMembers();
+        saveDraft();
         return;
       }
-      if (e.target.dataset.m !== "uni") return;
-      const box = e.target.closest(".member");
-      const select = $("[data-m=institution]", box);
-      const built = memberOptions(e.target.value, "");
-      select.innerHTML = built.html;
-      select.disabled = !built.list.length;
       syncMembersFromDom();
     });
   }
@@ -751,21 +843,36 @@
     const current = select.value;
     const list = group.value === "uca" ? UCA : group.value === "other" ? OTHER : [];
     select.disabled = !list.length;
-    select.innerHTML = `<option value="">${esc(SIC.t("form.choose"))}</option>` + list.map((name) => `<option value="${esc(name)}">${esc(name)}</option>`).join("");
-    if (list.includes(current)) select.value = current;
+    select.innerHTML =
+      `<option value="">${esc(SIC.t("form.choose"))}</option>` +
+      list.map((name) => `<option value="${esc(name)}">${esc(name)}</option>`).join("") +
+      (list.length ? `<option value="${AUTRE_INST}">${esc(SIC.t("f.uni.autre"))}</option>` : "");
+    if (list.includes(current) || isAutreInstitution(current)) select.value = isAutreInstitution(current) ? AUTRE_INST : current;
     updateConditional();
   }
   $("#uni_group").addEventListener("change", () => {
     $("#institution").value = "";
+    if ($("#institution_other")) $("#institution_other").value = "";
     fillEstablishments();
   });
+  $("#institution").addEventListener("change", updateConditional);
   document.addEventListener("sic:lang", fillEstablishments);
   fillEstablishments();
+  renderMembers();
   if (restored) {
     try {
       const saved = JSON.parse(localStorage.getItem(DRAFT_KEY));
-      if (saved && saved.institution) {
-        $("#institution").value = saved.institution;
+      if (saved) {
+        if (saved.uni_group === "autre") {
+          $("#uni_group").value = "other";
+          fillEstablishments();
+          $("#institution").value = AUTRE_INST;
+          if ($("#institution_other")) $("#institution_other").value = saved.institution_other || saved.institution || "";
+        } else {
+          if (saved.institution) $("#institution").value = saved.institution;
+          if (saved.institution_other && $("#institution_other")) $("#institution_other").value = saved.institution_other;
+        }
+        updateConditional();
       }
     } catch { /* brouillon illisible */ }
   }

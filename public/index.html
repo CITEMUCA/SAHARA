@@ -379,30 +379,41 @@
                 <div class="field field--full"><label for="full_name"><span data-i18n="f.full_name"></span> *</label><input id="full_name" name="full_name" required autocomplete="name" maxlength="120"></div>
                 <div class="field"><label for="email"><span data-i18n="f.email"></span> *</label><input id="email" name="email" type="email" required autocomplete="email" maxlength="200" dir="ltr"></div>
                 <div class="field"><label for="phone"><span data-i18n="f.phone"></span> *</label><input id="phone" name="phone" type="tel" required autocomplete="tel" placeholder="+212 6 00 00 00 00" maxlength="30" dir="ltr"></div>
-                <div class="field">
-                  <label for="uni_group"><span data-i18n="f.establishment"></span> *</label>
-                  <select id="uni_group" name="uni_group" required>
-                    <option value="" data-i18n="form.choose"></option>
-                    <option value="uca" data-i18n="f.uni.uca"></option>
-                    <option value="other" data-i18n="f.uni.other"></option>
-                  </select>
-                </div>
-                <div class="field" id="institutionWrap">
-                  <label for="institution"><span data-i18n="f.establishment_name"></span> *</label>
-                  <select id="institution" name="institution" required disabled>
-                    <option value="" data-i18n="form.choose"></option>
-                  </select>
-                </div>
                 <div class="field"><label for="city"><span data-i18n="f.city"></span> *</label><input id="city" name="city" required maxlength="80"></div>
               </div>
+
               <div class="field" id="profileField">
                 <label><span data-i18n="f.profile"></span> *</label>
                 <div class="pills">
-                  <label class="pill"><input type="radio" name="profile" value="researcher" required><span data-i18n="f.profile.researcher"></span></label>
-                  <label class="pill"><input type="radio" name="profile" value="student"><span data-i18n="f.profile.student"></span></label>
+                  <label class="pill"><input type="radio" name="profile" value="student" required><span data-i18n="f.profile.student"></span></label>
+                  <label class="pill"><input type="radio" name="profile" value="researcher"><span data-i18n="f.profile.researcher"></span></label>
                   <label class="pill"><input type="radio" name="profile" value="startup"><span data-i18n="f.profile.startup"></span></label>
                 </div>
               </div>
+
+              <div class="conditional" id="academicBox" data-show-for="student,researcher">
+                <div class="grid-2">
+                  <div class="field">
+                    <label for="uni_group"><span data-i18n="f.establishment"></span> *</label>
+                    <select id="uni_group" name="uni_group">
+                      <option value="" data-i18n="form.choose"></option>
+                      <option value="uca" data-i18n="f.uni.uca"></option>
+                      <option value="other" data-i18n="f.uni.other"></option>
+                    </select>
+                  </div>
+                  <div class="field" id="institutionWrap" hidden>
+                    <label for="institution"><span data-i18n="f.establishment_name"></span> *</label>
+                    <select id="institution" name="institution" disabled>
+                      <option value="" data-i18n="form.choose"></option>
+                    </select>
+                  </div>
+                  <div class="field field--full" id="institutionOtherWrap" hidden>
+                    <label for="institution_other"><span data-i18n="f.establishment_other"></span> *</label>
+                    <input id="institution_other" name="institution_other" maxlength="200" data-i18n-placeholder="f.establishment_other.ph">
+                  </div>
+                </div>
+              </div>
+
               <div class="conditional" id="studentBox" data-show-for="student">
                 <div class="field">
                   <label><span data-i18n="f.study_level"></span> *</label>
@@ -414,6 +425,13 @@
                   </div>
                 </div>
                 <div class="field"><label for="training_title"><span data-i18n="f.training"></span> *</label><input id="training_title" name="training_title" maxlength="160"></div>
+              </div>
+
+              <div class="conditional" id="startupBox" data-show-for="startup">
+                <div class="field field--full">
+                  <label for="startup_name"><span data-i18n="f.startup_name"></span> *</label>
+                  <input id="startup_name" name="startup_name" maxlength="150" data-i18n-placeholder="f.startup_name.ph">
+                </div>
               </div>
             </fieldset>
 
