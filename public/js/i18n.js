@@ -44,8 +44,8 @@ window.SIC_I18N = {
     "organized.by": "Organisé par",
 
     "keydates.title": "Dates clés",
-    "keydates.launch": "Lancement du challenge",
-    "keydates.launch.date": "26 octobre 2026",
+    "keydates.launch": "Lancement des candidatures",
+    "keydates.launch.date": "28 septembre 2026",
     "keydates.close": "Clôture des inscriptions",
     "keydates.close.date": "18 octobre 2026",
     "keydates.select": "Sélection des participants",
@@ -629,8 +629,8 @@ window.SIC_I18N = {
     "organized.by": "Organized by",
 
     "keydates.title": "Key dates",
-    "keydates.launch": "Challenge launch",
-    "keydates.launch.date": "26 October 2026",
+    "keydates.launch": "Applications open",
+    "keydates.launch.date": "28 September 2026",
     "keydates.close": "Applications close",
     "keydates.close.date": "18 October 2026",
     "keydates.select": "Participant selection",
@@ -1209,8 +1209,8 @@ window.SIC_I18N = {
     "organized.by": "من تنظيم",
 
     "keydates.title": "التواريخ الرئيسية",
-    "keydates.launch": "انطلاق التحدي",
-    "keydates.launch.date": "26 أكتوبر 2026",
+    "keydates.launch": "فتح باب الترشيحات",
+    "keydates.launch.date": "28 شتنبر 2026",
     "keydates.close": "إغلاق الترشيحات",
     "keydates.close.date": "18 أكتوبر 2026",
     "keydates.select": "انتقاء المشاركين",
