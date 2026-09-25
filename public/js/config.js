@@ -19,6 +19,7 @@ window.SIC_CONFIG = {
     { name: "Centre Régional d'Investissement Marrakech-Safi", logo: "/assets/partners/cri.jpeg", url: "https://www.cri-marrakech.ma/", tier: "institutional" },
     { name: "CGEM", logo: "/assets/partners/cgem.webp", url: "https://www.cgem.ma/", tier: "institutional" },
     { name: "Agence de Développement Social", logo: "/assets/partners/ads.jpeg", url: "https://www.ads.ma/", tier: "institutional" },
+    { name: "Conseil Régional du Tourisme de Marrakech", logo: "/assets/partners/crt-marrakech.webp", url: "https://www.visitmarrakech.com/", tier: "institutional" },
   ],
 
   partnerSlots: 0,
