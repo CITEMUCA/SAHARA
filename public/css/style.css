@@ -656,12 +656,26 @@ body.nav-open .burger span:nth-child(3) {
   margin-top: 10px;
 }
 .hero__year {
+  display: inline-flex;
+  gap: 0.12em;
   font-size: clamp(1.4rem, 3vw, 2.3rem);
   font-weight: 800;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.08em;
   margin-top: 14px;
-  color: transparent;
-  -webkit-text-stroke: 1.4px var(--sky);
+}
+.hero__digit {
+  line-height: 1;
+  paint-order: stroke fill;
+}
+/* Les 2 : trait vert, rempli rouge */
+.hero__digit--a {
+  color: #c1272d;
+  -webkit-text-stroke: 1.6px #1b8a4b;
+}
+/* 0 et 6 : trait rouge, rempli vert (inverse) */
+.hero__digit--b {
+  color: #1b8a4b;
+  -webkit-text-stroke: 1.6px #c1272d;
 }
 [dir="rtl"] .hero__title {
   line-height: 1.25;
