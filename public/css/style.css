@@ -946,33 +946,45 @@ body.nav-open .burger span:nth-child(3) {
 
 @media (max-width: 560px) {
   .hero-dates__list {
-    grid-template-columns: 1fr 1fr;
-    gap: 14px 10px;
+    grid-template-columns: 1fr;
+    gap: 0;
   }
   .hero-dates__list::before {
     display: none;
   }
   .hero-dates__item {
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 16px 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 12px;
+    row-gap: 2px;
+    align-items: start;
     text-align: start;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 6px 10px;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
-  .hero-dates__item:nth-child(3),
-  .hero-dates__item:nth-child(4) {
+  .hero-dates__item:last-child {
     border-bottom: 0;
+    padding-bottom: 2px;
   }
-  .hero-dates__label,
-  .hero-dates__date {
-    flex: 1 1 100%;
-    padding-inline-start: 24px;
-    margin-top: -20px;
+  .hero-dates__item:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 7px;
+    top: 24px;
+    bottom: -2px;
+    width: 1px;
+    background: linear-gradient(180deg, rgba(244, 201, 93, 0.7), rgba(255, 255, 255, 0.12));
+  }
+  .hero-dates__dot {
+    grid-row: 1 / span 2;
+    margin-top: 4px;
+  }
+  .hero-dates__label {
+    font-size: 0.88rem;
   }
   .hero-dates__date {
-    margin-top: 0;
+    font-size: 0.8rem;
   }
 }
 
@@ -3698,11 +3710,22 @@ body.nav-open .burger span:nth-child(3) {
     grid-template-columns: 1fr;
   }
   .hero__visual {
-    max-width: 420px;
+    max-width: 440px;
     margin-inline: auto;
     width: 100%;
-    order: -1;
-    display: none;
+    order: 2;
+    display: flex;
+    margin-top: 28px;
+  }
+  .hero__content {
+    order: 1;
+  }
+  .hero__stage {
+    max-width: 320px;
+  }
+  .chip {
+    font-size: 0.74rem;
+    padding: 8px 12px;
   }
   .challenge-grid,
   .track-grid,
@@ -3766,6 +3789,31 @@ body.nav-open .burger span:nth-child(3) {
   }
   .hero {
     padding-bottom: 150px;
+  }
+  .hero__visual {
+    max-width: 100%;
+    margin-top: 22px;
+  }
+  .hero__stage {
+    max-width: 280px;
+    width: 88%;
+  }
+  .chip--a {
+    top: 6%;
+    inset-inline-start: -2%;
+  }
+  .chip--b {
+    bottom: 10%;
+    inset-inline-end: -2%;
+  }
+  .occasion {
+    padding: 14px 16px;
+  }
+  .occasion__title {
+    font-size: 0.98rem;
+  }
+  .hero-dates {
+    padding: 14px 14px 12px;
   }
   .hero__bar {
     flex-direction: column;

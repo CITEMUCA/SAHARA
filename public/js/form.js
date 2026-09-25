@@ -526,7 +526,9 @@
     recap.id = "";
     recap.classList.add("recap--print");
     $(".recap--print", success)?.remove();
-    success.insertBefore(recap, $(".form-success__actions", success));
+    const next = $(".muted", success);
+    if (next) success.insertBefore(recap, next);
+    else success.appendChild(recap);
     form.hidden = true;
     success.hidden = false;
     $("#formCard").scrollIntoView({ behavior: "smooth", block: "start" });
@@ -624,12 +626,6 @@
   if (els.trl) els.trl.addEventListener("input", () => (els.trlOut.textContent = els.trl.value));
 
   $("#resetDraft").addEventListener("click", resetForm);
-  $("#againBtn").addEventListener("click", () => {
-    $("#formSuccess").hidden = true;
-    form.hidden = false;
-    resetForm();
-  });
-  $("#printRecap").addEventListener("click", () => window.print());
   $("#copyRef").addEventListener("click", async () => {
     try {
       await navigator.clipboard.writeText($("#refCode").textContent);
