@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Reem+Kufi:wght@500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="/css/style.css?v=form9">
+  <link rel="stylesheet" href="/css/style.css?v=form16">
 </head>
 <body>
   <a class="skip-link" href="#main">Aller au contenu</a>
@@ -34,7 +34,9 @@
   <header class="header" id="header">
     <div class="container header__inner">
       <a class="brand" href="#top" aria-label="Moroccan Sahara Innovation Challenge 2026">
-        <img src="/assets/brand/logo-sic.png" alt="" width="44" height="44">
+        <img class="brand__uca" src="/assets/logos/uca.png" alt="Université Cadi Ayyad" width="72" height="72">
+        <span class="brand__divider" aria-hidden="true"></span>
+        <img class="brand__sic" src="/assets/brand/logo-sic.png" alt="" width="44" height="44">
         <span class="brand__text">
           <em>Moroccan</em>
           <strong>SAHARA</strong>
@@ -80,7 +82,7 @@
             <span class="hero__year">2026</span>
           </h1>
           <p class="hero__tagline reveal" data-i18n="hero.tagline"></p>
-          <p class="hero__sub reveal" data-i18n="hero.sub"></p>
+          <p class="hero__sub reveal" data-i18n-html="hero.sub"></p>
           <ul class="hero__meta reveal">
             <li><i class="fa-regular fa-calendar"></i> <span data-i18n="hero.dates"></span></li>
             <li><i class="fa-solid fa-location-dot"></i> <span data-i18n="hero.place"></span></li>
@@ -93,17 +95,44 @@
 
         <div class="hero__visual reveal">
           <div class="hero__stage">
-            <div class="orbit orbit--1"></div>
-            <div class="orbit orbit--2"></div>
-            <img class="hero__emblem" src="/assets/brand/logo-sic.png" alt="">
+            <div class="orbit orbit--1" aria-hidden="true"></div>
+            <div class="orbit orbit--2" aria-hidden="true"></div>
+            <img class="hero__emblem" src="/assets/brand/logo-sic.png" alt="Moroccan Sahara Innovation Challenge">
             <div class="chip chip--a"><i class="fa-solid fa-layer-group"></i> 6 Challenges</div>
             <div class="chip chip--b"><i class="fa-solid fa-route"></i> IDEA · LAB · SCALE</div>
-            <div class="chip chip--c"><i class="fa-solid fa-anchor"></i> Dakhla Atlantique</div>
           </div>
           <button type="button" class="occasion" data-open-story>
-            <span class="occasion__mark"><i class="fa-solid fa-star"></i><i class="fa-solid fa-flag"></i></span>
-            <span class="occasion__title" data-i18n="occasion.frame"></span>
+            <span class="occasion__mark" aria-hidden="true"><i class="fa-solid fa-star"></i><i class="fa-solid fa-flag"></i></span>
+            <p class="occasion__title" data-i18n="occasion.card"></p>
           </button>
+          <aside class="hero-dates" aria-labelledby="hero-dates-title">
+            <header class="hero-dates__head">
+              <i class="fa-regular fa-calendar" aria-hidden="true"></i>
+              <h2 class="hero-dates__title" id="hero-dates-title" data-i18n="keydates.title"></h2>
+            </header>
+            <ol class="hero-dates__list">
+              <li class="hero-dates__item">
+                <span class="hero-dates__dot" aria-hidden="true"></span>
+                <span class="hero-dates__label" data-i18n="keydates.launch"></span>
+                <time class="hero-dates__date" datetime="2026-09-28" data-i18n="keydates.launch.date"></time>
+              </li>
+              <li class="hero-dates__item">
+                <span class="hero-dates__dot" aria-hidden="true"></span>
+                <span class="hero-dates__label" data-i18n="keydates.close"></span>
+                <time class="hero-dates__date" datetime="2026-10-18" data-i18n="keydates.close.date"></time>
+              </li>
+              <li class="hero-dates__item">
+                <span class="hero-dates__dot" aria-hidden="true"></span>
+                <span class="hero-dates__label" data-i18n="keydates.select"></span>
+                <time class="hero-dates__date" datetime="2026-10-22" data-i18n="keydates.select.date"></time>
+              </li>
+              <li class="hero-dates__item">
+                <span class="hero-dates__dot" aria-hidden="true"></span>
+                <span class="hero-dates__label" data-i18n="keydates.result"></span>
+                <time class="hero-dates__date" datetime="2026-10-29" data-i18n="keydates.result.date"></time>
+              </li>
+            </ol>
+          </aside>
         </div>
       </div>
 
@@ -141,9 +170,8 @@
       <div class="container orgstrip__inner">
         <p class="orgstrip__title" id="orgstrip-title" data-i18n="organized.by"></p>
         <div class="orgstrip__logos">
-          <img src="/assets/logos/uca.png" alt="Université Cadi Ayyad" loading="lazy">
-          <img src="/assets/logos/cite-innovation.png" alt="Cité de l'Innovation, Université Cadi Ayyad" loading="lazy">
           <img src="/assets/logos/fssm.png" alt="Faculté des Sciences Semlalia" loading="lazy">
+          <img src="/assets/logos/cite-innovation.png" alt="Cité de l'Innovation, Université Cadi Ayyad" loading="lazy">
           <img src="/assets/logos/fstg.png" alt="Faculté des Sciences et Techniques de Marrakech" loading="lazy">
         </div>
       </div>
@@ -289,9 +317,8 @@
         </header>
         <h3 class="partners__label reveal" data-i18n="partners.organizers"></h3>
         <div class="org-grid reveal">
-          <figure class="org"><img src="/assets/logos/uca.png" alt="Université Cadi Ayyad" loading="lazy"></figure>
-          <figure class="org"><img src="/assets/logos/cite-innovation.png" alt="Cité de l'Innovation" loading="lazy"></figure>
           <figure class="org"><img src="/assets/logos/fssm.png" alt="Faculté des Sciences Semlalia" loading="lazy"></figure>
+          <figure class="org"><img src="/assets/logos/cite-innovation.png" alt="Cité de l'Innovation" loading="lazy"></figure>
           <figure class="org"><img src="/assets/logos/fstg.png" alt="Faculté des Sciences et Techniques de Marrakech" loading="lazy"></figure>
         </div>
         <h3 class="partners__label reveal" data-i18n="partners.partners"></h3>
@@ -480,7 +507,7 @@
           <img src="/assets/brand/logo-sic.png" alt="" width="52" height="52">
           <span class="brand__text"><em>Moroccan</em><strong>SAHARA</strong><small>Innovation Challenge <b>2026</b></small></span>
         </a>
-        <p class="footer__motto" data-i18n="hero.tagline"></p>
+        <p class="footer__motto" data-i18n="footer.tagline"></p>
       </div>
       <div>
         <h4 data-i18n="footer.nav"></h4>
