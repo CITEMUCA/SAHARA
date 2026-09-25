@@ -29,7 +29,7 @@ window.SIC_I18N = {
     "hero.title2": "Innovation Challenge",
     "hero.tagline": "Innover pour les territoires • Révéler les potentialités • Façonner l'avenir",
     "hero.sub":
-      "<strong>Innover pour les Provinces du Sud</strong><br>Étudiants, chercheurs, jeunes innovateurs et startups : transformez les défis et les opportunités des Provinces du Sud en solutions à fort impact.",
+      "<br>Étudiants, chercheurs, jeunes innovateurs et startups : transformez les défis et les opportunités des Provinces du Sud en solutions à fort impact.",
     "hero.dates": "29 → 31 octobre 2026",
     "hero.place": "Marrakech · Cité de l'Innovation UCA",
     "hero.cta1": "Déposer ma candidature",
