@@ -169,6 +169,13 @@ button {
   transition: transform 0.2s var(--ease), box-shadow 0.25s var(--ease), background 0.25s, color 0.25s, border-color 0.25s;
   white-space: nowrap;
 }
+.btn[hidden],
+.form-nav .btn[hidden],
+#prevBtn[hidden],
+#nextBtn[hidden],
+#submitBtn[hidden] {
+  display: none !important;
+}
 .btn:hover {
   transform: translateY(-2px);
 }

@@ -423,11 +423,15 @@
       li.classList.toggle("is-done", i < step - 1);
     });
     els.bar.style.width = `${(step / TOTAL) * 100}%`;
+    const last = step === TOTAL;
     els.prev.hidden = step === 1;
-    els.next.hidden = step === TOTAL;
-    els.submit.hidden = step !== TOTAL;
+    els.next.hidden = last;
+    els.submit.hidden = !last;
+    els.prev.style.display = step === 1 ? "none" : "";
+    els.next.style.display = last ? "none" : "";
+    els.submit.style.display = last ? "" : "none";
     els.stepOf.textContent = SIC.t("form.stepof", { n: step });
-    if (step === TOTAL) renderRecap();
+    if (last) renderRecap();
     if (scroll) $("#formCard").scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
@@ -674,7 +678,13 @@
   /* ------------------------------------------------------------------ */
   /* Initialisation                                                      */
   /* ------------------------------------------------------------------ */
-  els.next.addEventListener("click", () => validateStep(step) && goTo(step + 1));
+  els.next.addEventListener("click", () => {
+    if (step === TOTAL) {
+      form.requestSubmit ? form.requestSubmit() : els.submit.click();
+      return;
+    }
+    if (validateStep(step)) goTo(step + 1);
+  });
   els.prev.addEventListener("click", () => goTo(step - 1));
   form.addEventListener("submit", onSubmit);
   form.addEventListener("input", (e) => {
