@@ -1309,9 +1309,9 @@ body.is-scrolled .occasion--banner {
   width: auto;
   max-width: min(220px, 28vw);
   object-fit: contain;
-  padding: 8px 10px;
-  border-radius: 10px;
-  background: #fff;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
   transition: transform 0.3s;
 }
 .orgstrip__logos a:hover img {
@@ -2583,19 +2583,19 @@ body.is-scrolled .occasion--banner {
   align-items: center;
   justify-content: center;
   gap: 14px;
-  padding: 26px 20px;
+  padding: 18px 12px;
   border-radius: var(--radius);
-  background: #fff;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-sm);
+  background: transparent;
+  border: 0;
+  box-shadow: none;
   text-align: center;
   text-decoration: none;
   color: inherit;
-  transition: transform 0.3s var(--ease), box-shadow 0.3s;
+  transition: transform 0.3s var(--ease);
 }
 a.org:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow);
+  box-shadow: none;
 }
 .org img {
   height: 88px;

@@ -562,7 +562,7 @@ window.SIC_I18N = {
     "contact.success": "Message envoyé. Nous vous répondrons rapidement.",
     "contact.address": "Cité de l'Innovation, Université Cadi Ayyad, Marrakech, Maroc",
 
-    "footer.tagline": "Innover pour les Provinces du Sud.",
+    "footer.tagline": "Innover pour les territoires • Révéler les potentialités • Façonner l'avenir",
     "footer.rights": "© 2026 Moroccan Sahara Innovation Challenge, Université Cadi Ayyad. Tous droits réservés.",
     "footer.rules": "Règlement",
     "footer.privacy": "Données personnelles",
@@ -1142,7 +1142,7 @@ window.SIC_I18N = {
     "contact.success": "Message sent. We will get back to you shortly.",
     "contact.address": "Innovation City, Cadi Ayyad University, Marrakech, Morocco",
 
-    "footer.tagline": "Innovating for the Southern Provinces.",
+    "footer.tagline": "Innovate for the territories • Reveal the potential • Shape the future",
     "footer.rights": "© 2026 Moroccan Sahara Innovation Challenge, Cadi Ayyad University. All rights reserved.",
     "footer.rules": "Rules",
     "footer.privacy": "Personal data",
@@ -1720,7 +1720,7 @@ window.SIC_I18N = {
     "contact.success": "تم إرسال الرسالة. سنرد عليكم في أقرب الآجال.",
     "contact.address": "مجمع الابتكار، جامعة القاضي عياض، مراكش، المغرب",
 
-    "footer.tagline": "الابتكار من أجل الأقاليم الجنوبية.",
+    "footer.tagline": "الابتكار من أجل المجالات • كشف المؤهلات • صياغة المستقبل",
     "footer.rights": "© 2026 تحدي الصحراء المغربية للابتكار، جامعة القاضي عياض. جميع الحقوق محفوظة.",
     "footer.rules": "النظام",
     "footer.privacy": "المعطيات الشخصية",
