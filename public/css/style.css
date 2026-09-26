@@ -698,6 +698,10 @@ body.nav-open .burger span:nth-child(3) {
   font-weight: 800;
   letter-spacing: 0.08em;
   margin-top: 14px;
+  /* Digits stay 2026 (not 6202); box follows page start (right in Arabic) */
+  direction: ltr;
+  unicode-bidi: isolate;
+  align-self: flex-start;
 }
 .hero__digit {
   line-height: 1;
