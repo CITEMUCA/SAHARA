@@ -64,6 +64,8 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-h) + 12px);
   -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
+  max-width: 100%;
 }
 body {
   margin: 0;
@@ -74,7 +76,8 @@ body {
   background: var(--sand-50);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
+  overflow-x: clip;
+  max-width: 100%;
 }
 body.nav-open,
 body.modal-open {
@@ -414,15 +417,19 @@ body.is-scrolled .header {
   align-items: center;
   justify-content: space-between;
   gap: clamp(8px, 2vw, 18px);
-  padding-inline: env(safe-area-inset-left) env(safe-area-inset-right);
+  padding-inline: max(8px, env(safe-area-inset-left)) max(8px, env(safe-area-inset-right));
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow: hidden;
 }
 .brand {
   display: inline-flex;
   align-items: center;
   gap: clamp(6px, 1.5vw, 12px);
   text-decoration: none;
-  flex-shrink: 0;
+  flex: 0 1 auto;
   min-width: 0;
+  max-width: 100%;
   /* Keep logo order stable in Arabic (RTL) */
   direction: ltr;
   unicode-bidi: isolate;
@@ -2748,6 +2755,7 @@ a.org:hover {
   color: var(--ink);
   box-shadow: 0 50px 120px -40px rgba(0, 0, 0, 0.7);
   position: relative;
+  overflow: hidden;
 }
 .form-card::before {
   content: "";
@@ -3053,10 +3061,18 @@ a.org:hover {
 }
 .hp {
   position: absolute !important;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
+  inset-inline-start: 0 !important;
+  inset-block-start: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  clip-path: inset(50%) !important;
+  border: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 .stepper-input {
   display: flex;
@@ -3937,7 +3953,7 @@ a.org:hover {
     justify-content: space-between;
   }
   .brand {
-    max-width: calc(100% - 130px);
+    max-width: min(52vw, calc(100% - 140px));
   }
 }
 
@@ -3957,6 +3973,20 @@ a.org:hover {
   }
   .hero__tagline {
     white-space: normal;
+  }
+  .brand__text {
+    display: none;
+  }
+  .brand__divider {
+    display: none;
+  }
+  .brand__uca {
+    width: 44px;
+    height: 44px;
+  }
+  .brand__sic {
+    width: 36px;
+    height: 36px;
   }
 }
 
@@ -4054,28 +4084,36 @@ a.org:hover {
     display: none;
   }
   .header__inner {
-    width: min(1340px, calc(100% - 16px));
-    gap: 8px;
+    width: 100%;
+    max-width: 100%;
+    padding-inline: 12px;
+    gap: 10px;
   }
   .brand {
-    max-width: calc(100% - 118px);
-    gap: 6px;
+    flex: 0 1 auto;
+    min-width: 0;
+    max-width: none;
+    gap: 8px;
+    overflow: hidden;
+  }
+  .brand__uca {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  }
+  .brand__sic {
+    width: 34px;
+    height: 34px;
   }
   .brand__divider {
     display: none;
   }
-  .brand__text small {
+  .brand__text {
     display: none;
   }
-  .brand__text em {
-    display: none;
-  }
-  .brand__text strong {
-    letter-spacing: 0.12em;
-    color: inherit;
-  }
-  body.is-scrolled .header .brand__text strong {
-    color: var(--ink);
+  .header__actions {
+    gap: 6px;
   }
   .lang {
     padding: 2px;
@@ -4088,6 +4126,7 @@ a.org:hover {
   .burger {
     width: 40px;
     height: 40px;
+    flex-shrink: 0;
   }
   .hero {
     padding-bottom: 150px;
