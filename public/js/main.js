@@ -24,7 +24,7 @@
 
   const SIC = {
     lang: detectLang(),
-    config: { registrationOpen: true, deadline: DEFAULT_DEADLINE, maxFileMb: 5 },
+    config: { registrationOpen: true, deadline: DEFAULT_DEADLINE },
     dict() {
       return I18N[this.lang];
     },

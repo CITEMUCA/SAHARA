@@ -11,7 +11,6 @@
 
   const DRAFT_KEY = "sic26_draft";
   const TOTAL = 4;
-  const ALLOWED = [".pdf", ".ppt", ".pptx"];
   const EMAIL_RE = /^[^\s@]{1,64}@[^\s@]{1,190}\.[^\s@]{2,}$/;
   const PHONE_RE = /^\+?[0-9 ().-]{8,20}$/;
   const FIELD_STEP = {
@@ -23,7 +22,6 @@
 
   let step = 1;
   let members = [];
-  let file = null;
   let saveTimer;
 
   const els = {
@@ -41,8 +39,6 @@
     solo: $("#soloHint"),
     trl: $("#trl"),
     trlOut: $("#trlOut"),
-    drop: $("#dropzone"),
-    fileInput: $("#project_file"),
   };
 
   /* ------------------------------------------------------------------ */
@@ -244,67 +240,6 @@
       })
       .join("");
     els.solo.hidden = count > 0;
-  }
-
-  /* ------------------------------------------------------------------ */
-  /* Fichier                                                             */
-  /* ------------------------------------------------------------------ */
-  function formatSize(bytes) {
-    return bytes > 1048576 ? `${(bytes / 1048576).toFixed(1)} Mo` : `${Math.round(bytes / 1024)} Ko`;
-  }
-
-  function setFile(f) {
-    if (!els.drop || !els.fileInput) {
-      file = f || null;
-      return;
-    }
-    const field = els.drop.closest(".field");
-    clearError(field);
-    if (!f) {
-      file = null;
-      els.fileInput.value = "";
-      $(".dropzone__empty", els.drop).hidden = false;
-      $(".dropzone__file", els.drop).hidden = true;
-      return;
-    }
-    const ext = f.name.slice(f.name.lastIndexOf(".")).toLowerCase();
-    const maxMb = SIC.config.maxFileMb || 5;
-    if (!ALLOWED.includes(ext)) return setError(field, SIC.t("err.file_type"));
-    if (f.size > maxMb * 1048576) return setError(field, SIC.t("err.file_size", { mb: maxMb }));
-    file = f;
-    $("#fileName").textContent = f.name;
-    $("#fileSize").textContent = formatSize(f.size);
-    $(".dropzone__empty", els.drop).hidden = true;
-    $(".dropzone__file", els.drop).hidden = false;
-  }
-
-  function initDropzone() {
-    if (!els.drop || !els.fileInput) return;
-    const dz = els.drop;
-    els.fileInput.addEventListener("change", () => setFile(els.fileInput.files[0]));
-    ["dragenter", "dragover"].forEach((t) =>
-      dz.addEventListener(t, (e) => {
-        e.preventDefault();
-        dz.classList.add("is-drag");
-      })
-    );
-    ["dragleave", "drop"].forEach((t) =>
-      dz.addEventListener(t, (e) => {
-        e.preventDefault();
-        dz.classList.remove("is-drag");
-      })
-    );
-    dz.addEventListener("drop", (e) => setFile(e.dataTransfer.files[0]));
-    dz.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        els.fileInput.click();
-      }
-    });
-    $("#fileRemove").addEventListener("click", (e) => {
-      e.stopPropagation();
-      setFile(null);
-    });
   }
 
   /* ------------------------------------------------------------------ */
@@ -536,25 +471,18 @@
   /* ------------------------------------------------------------------ */
   /* Envoi                                                               */
   /* ------------------------------------------------------------------ */
-  function buildFormData() {
+  function buildPayload() {
     const data = collect();
-    const fd = new FormData();
-    for (const [k, v] of Object.entries(data)) {
-      if (k === "members" || k === "territories" || k === "needs") fd.append(k, JSON.stringify(v));
-      else if (typeof v === "boolean") fd.append(k, String(v));
-      else if (k === "trl" && data.track !== "lab") continue;
-      else fd.append(k, v);
-    }
-    // Ne jamais envoyer la valeur autofill du pot de miel (label "Website" rempli par le navigateur).
-    fd.set("website_hp", "");
-    fd.append("lang", SIC.lang);
+    if (data.track !== "lab") delete data.trl;
+    data.website_hp = "";
+    data.lang = SIC.lang;
     const parts = ($("#full_name").value || "").trim().split(/\s+/);
-    fd.set("first_name", parts[0] || "");
-    fd.set("last_name", parts.slice(1).join(" ") || parts[0] || "");
+    data.first_name = parts[0] || "";
+    data.last_name = parts.slice(1).join(" ") || parts[0] || "";
     const inst = leaderInstitution().trim();
-    if (inst) fd.set("institution", inst);
-    else fd.delete("institution");
-    const membersPayload = (data.members || []).map((m) => ({
+    if (inst) data.institution = inst;
+    else delete data.institution;
+    data.members = (data.members || []).map((m) => ({
       name: m.name,
       profile: m.profile,
       study_level: m.study_level,
@@ -562,28 +490,22 @@
       institution: memberInstitutionLabel(m),
       startup_name: m.startup_name || "",
     }));
-    fd.set("members", JSON.stringify(membersPayload));
-    if (file) fd.append("project_file", file, file.name);
-    return fd;
+    return data;
   }
 
-  function send(fd, onProgress) {
-    return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-      xhr.open("POST", "/api/register");
-      xhr.upload.addEventListener("progress", (e) => e.lengthComputable && onProgress(Math.round((e.loaded / e.total) * 100)));
-      xhr.onload = () => {
-        let body = {};
-        try {
-          body = JSON.parse(xhr.responseText);
-        } catch {
-          /* réponse non JSON */
-        }
-        resolve({ status: xhr.status, body });
-      };
-      xhr.onerror = () => reject(new Error("network"));
-      xhr.send(fd);
+  async function send(payload) {
+    const res = await fetch("/api/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
     });
+    let body = {};
+    try {
+      body = await res.json();
+    } catch {
+      /* réponse non JSON */
+    }
+    return { status: res.status, body };
   }
 
   async function onSubmit(e) {
@@ -599,7 +521,7 @@
     els.prev.disabled = true;
     label.textContent = SIC.t("form.sending");
     try {
-      const { status, body } = await send(buildFormData(), (p) => (label.textContent = `${SIC.t("form.sending")} ${p}%`));
+      const { status, body } = await send(buildPayload());
       if (body.ok) return onSuccess(body.ref);
       if (status === 422 && body.fields) {
         let firstStep = TOTAL;
@@ -613,8 +535,8 @@
         showAlert(SIC.t("err.check"));
         return;
       }
-      const map = { rate_limited: "err.rate_limited", duplicate: "err.duplicate", closed: "err.closed", file_too_large: "err.file_size", bad_file_type: "err.file_type" };
-      showAlert(SIC.t(map[body.error] || "err.server", { ref: body.ref, mb: SIC.config.maxFileMb }));
+      const map = { rate_limited: "err.rate_limited", duplicate: "err.duplicate", closed: "err.closed" };
+      showAlert(SIC.t(map[body.error] || "err.server", { ref: body.ref }));
     } catch {
       showAlert(SIC.t("err.network"));
     } finally {
@@ -645,7 +567,6 @@
     localStorage.removeItem(DRAFT_KEY);
     form.reset();
     members = [];
-    setFile(null);
     if (els.teamSize) els.teamSize.value = 1;
     renderMembers();
     renderChoices();
@@ -757,8 +678,6 @@
 
   document.addEventListener("sic:config", (e) => {
     const cfg = e.detail;
-    const hint = $("#fileHint");
-    if (hint) hint.textContent = SIC.t("file.hint", { mb: cfg.maxFileMb });
     if (!cfg.registrationOpen) {
       form.hidden = true;
       $("#formClosed").hidden = false;
@@ -770,14 +689,11 @@
     renderChoices();
     applyPendingRadios();
     renderMembers();
-    const hint = $("#fileHint");
-    if (hint) hint.textContent = SIC.t("file.hint", { mb: SIC.config.maxFileMb });
     els.stepOf.textContent = SIC.t("form.stepof", { n: step });
     if (step === TOTAL) renderRecap();
     $$(".has-error", form).forEach(clearError);
   });
 
-  initDropzone();
   initCounters();
   const restored = restoreDraft();
   if (restored) $$("textarea[data-counter]", form).forEach((ta) => ta._updateCounter && ta._updateCounter());

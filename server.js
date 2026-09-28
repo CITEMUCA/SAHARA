@@ -1,10 +1,8 @@
 "use strict";
 
 const path = require("node:path");
-const fs = require("node:fs");
 const crypto = require("node:crypto");
 const express = require("express");
-const multer = require("multer");
 const { Pool } = require("pg");
 const ExcelJS = require("exceljs");
 
@@ -15,9 +13,6 @@ try {
 }
 
 const PORT = Number(process.env.PORT) || 3000;
-const DATA_DIR = path.resolve(__dirname, process.env.DATA_DIR || "data");
-const UPLOAD_DIR = path.join(DATA_DIR, "uploads");
-const MAX_FILE_MB = Number(process.env.MAX_FILE_MB) || 5;
 const REG_DEADLINE = new Date(process.env.REG_DEADLINE || "2026-10-18T23:59:59+01:00");
 const TOKEN_TTL_MS = 8 * 60 * 60 * 1000;
 
@@ -26,8 +21,6 @@ if (!ADMIN_PASSWORD) {
   ADMIN_PASSWORD = crypto.randomBytes(9).toString("base64url");
   console.warn(`[admin] ADMIN_PASSWORD non défini - mot de passe temporaire : ${ADMIN_PASSWORD}`);
 }
-
-fs.mkdirSync(UPLOAD_DIR, { recursive: true });
 
 /* ------------------------------------------------------------------ */
 /* Base de données                                                     */
@@ -143,7 +136,6 @@ const PROFILES = ["student", "phd", "researcher", "startup", "professional", "ot
 const MATURITY = ["idea", "concept", "poc", "prototype", "mvp", "market"];
 const NEEDS = ["mentoring", "ip", "prototyping", "business", "funding", "market", "network", "incubation"];
 const TERRITORIES = ["gon", "lse", "dod", "all"];
-const ALLOWED_EXT = [".pdf", ".ppt", ".pptx"];
 const CRITERIA = [
   "Pertinence pour les Provinces du Sud",
   "Caractère innovant",
@@ -248,7 +240,8 @@ function makeRef() {
 }
 
 function parseJsonField(v, fallback) {
-  if (typeof v !== "string" || !v) return fallback;
+  if (v == null || v === "") return fallback;
+  if (typeof v !== "string") return v;
   try {
     return JSON.parse(v);
   } catch {
@@ -286,28 +279,9 @@ function rateLimit({ windowMs, max }) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Upload                                                              */
-/* ------------------------------------------------------------------ */
-const upload = multer({
-  storage: multer.diskStorage({
-    destination: UPLOAD_DIR,
-    filename: (_req, file, cb) => {
-      const ext = path.extname(file.originalname).toLowerCase();
-      cb(null, `${Date.now()}-${crypto.randomBytes(6).toString("hex")}${ext}`);
-    },
-  }),
-  limits: { fileSize: MAX_FILE_MB * 1024 * 1024, files: 1, fields: 80 },
-  fileFilter: (_req, file, cb) => {
-    const ext = path.extname(file.originalname).toLowerCase();
-    if (!ALLOWED_EXT.includes(ext)) return cb(new Error("bad_file_type"));
-    cb(null, true);
-  },
-});
-
-/* ------------------------------------------------------------------ */
 /* Validation d'une candidature                                        */
 /* ------------------------------------------------------------------ */
-function validateRegistration(body, file) {
+function validateRegistration(body) {
   const errors = {};
   const req = (key, val, ok = Boolean(val)) => {
     if (!ok) errors[key] = "invalid";
@@ -406,10 +380,11 @@ function validateRegistration(body, file) {
   if (project.video_url) req("video_url", project.video_url, isUrl(project.video_url));
   if (project.website) req("project_website", project.website, isUrl(project.website));
 
+  const yes = (v) => v === true || v === "true" || v === "on";
   const consents = {
-    rules: body.consent_rules === "true" || body.consent_rules === "on",
-    data: body.consent_data === "true" || body.consent_data === "on",
-    media: body.consent_media === "true" || body.consent_media === "on",
+    rules: yes(body.consent_rules),
+    data: yes(body.consent_data),
+    media: yes(body.consent_media),
   };
   req("consent_rules", consents.rules);
   req("consent_data", consents.data);
@@ -445,80 +420,59 @@ app.get("/api/config", (_req, res) => {
   res.json({
     registrationOpen: Date.now() < REG_DEADLINE.getTime(),
     deadline: REG_DEADLINE.toISOString(),
-    maxFileMb: MAX_FILE_MB,
-    allowedExt: ALLOWED_EXT,
   });
 });
 
-app.post(
-  "/api/register",
-  rateLimit({ windowMs: 15 * 60 * 1000, max: 8 }),
-  async (req, res, next) => {
-    upload.single("project_file")(req, res, (err) => {
-      if (!err) return next();
-      const code = err.code === "LIMIT_FILE_SIZE" ? "file_too_large" : err.message === "bad_file_type" ? "bad_file_type" : "upload_error";
-      res.status(400).json({ ok: false, error: code });
-    });
-  },
-  async (req, res) => {
-    const cleanup = () => req.file && fs.rm(req.file.path, { force: true }, () => {});
+app.post("/api/register", rateLimit({ windowMs: 15 * 60 * 1000, max: 8 }), async (req, res) => {
+  if (str(req.body.website_hp)) {
+    console.warn("[inscription] honeypot déclenché - candidature ignorée (possible autofill)");
+    return res.status(400).json({ ok: false, error: "validation", fields: { form: "invalid" } });
+  }
+  if (Date.now() >= REG_DEADLINE.getTime()) {
+    return res.status(403).json({ ok: false, error: "closed" });
+  }
 
-    if (str(req.body.website_hp)) {
-      cleanup();
-      console.warn("[inscription] honeypot déclenché - candidature ignorée (possible autofill)");
-      return res.status(400).json({ ok: false, error: "validation", fields: { form: "invalid" } });
-    }
-    if (Date.now() >= REG_DEADLINE.getTime()) {
-      cleanup();
-      return res.status(403).json({ ok: false, error: "closed" });
-    }
+  const v = validateRegistration(req.body);
+  if (Object.keys(v.errors).length) {
+    console.warn("[inscription] validation échouée:", Object.keys(v.errors).join(", "));
+    return res.status(422).json({ ok: false, error: "validation", fields: v.errors });
+  }
 
-    const v = validateRegistration(req.body, req.file);
-    if (Object.keys(v.errors).length) {
-      cleanup();
-      console.warn("[inscription] validation échouée:", Object.keys(v.errors).join(", "));
-      return res.status(422).json({ ok: false, error: "validation", fields: v.errors });
-    }
+  const dup = await db
+    .prepare("SELECT ref FROM registrations WHERE email = ? AND lower(title) = lower(?)")
+    .get(v.leader.email, v.project.title);
+  if (dup) {
+    return res.status(409).json({ ok: false, error: "duplicate", ref: dup.ref });
+  }
 
-    const dup = await db
-      .prepare("SELECT ref FROM registrations WHERE email = ? AND lower(title) = lower(?)")
-      .get(v.leader.email, v.project.title);
-    if (dup) {
-      cleanup();
-      return res.status(409).json({ ok: false, error: "duplicate", ref: dup.ref });
-    }
-
-    const payload = { leader: v.leader, members: v.members, project: v.project, consents: v.consents };
-    const ts = now();
-    let ref;
-    for (let i = 0; i < 5; i++) {
-      ref = makeRef();
-      try {
-        await db.prepare(
-          `INSERT INTO registrations
-           (ref, created_at, updated_at, track, challenge, title, leader_name, email, phone, institution, city,
-            team_size, lang, file_path, file_original, file_size, payload, ip_hash)
-           VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
-        ).run(
-          ref, ts, ts, v.project.track, v.project.challenge, v.project.title,
-          `${v.leader.first_name} ${v.leader.last_name}`, v.leader.email, v.leader.phone,
-          v.leader.institution, v.leader.city, v.teamSize, str(req.body.lang, 5) || "fr",
-          path.basename(req.file ? req.file.path : "") || null, req.file ? decodeName(str(req.file.originalname, 200)) : null, req.file ? req.file.size : null,
-          JSON.stringify(payload), hashIp(req.ip)
-        );
-        break;
-      } catch (e) {
-        if (e.code !== "23505" && !String(e.message).includes("UNIQUE") || i === 4) {
-          cleanup();
-          console.error(e);
-          return res.status(500).json({ ok: false, error: "server" });
-        }
+  const payload = { leader: v.leader, members: v.members, project: v.project, consents: v.consents };
+  const ts = now();
+  let ref;
+  for (let i = 0; i < 5; i++) {
+    ref = makeRef();
+    try {
+      await db.prepare(
+        `INSERT INTO registrations
+         (ref, created_at, updated_at, track, challenge, title, leader_name, email, phone, institution, city,
+          team_size, lang, payload, ip_hash)
+         VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
+      ).run(
+        ref, ts, ts, v.project.track, v.project.challenge, v.project.title,
+        `${v.leader.first_name} ${v.leader.last_name}`, v.leader.email, v.leader.phone,
+        v.leader.institution, v.leader.city, v.teamSize, str(req.body.lang, 5) || "fr",
+        JSON.stringify(payload), hashIp(req.ip)
+      );
+      break;
+    } catch (e) {
+      if (e.code !== "23505" && !String(e.message).includes("UNIQUE") || i === 4) {
+        console.error(e);
+        return res.status(500).json({ ok: false, error: "server" });
       }
     }
-    console.log(`[inscription] ${ref} - ${v.project.title}`);
-    res.status(201).json({ ok: true, ref });
   }
-);
+  console.log(`[inscription] ${ref} - ${v.project.title}`);
+  res.status(201).json({ ok: true, ref });
+});
 
 app.post("/api/contact", rateLimit({ windowMs: 15 * 60 * 1000, max: 5 }), async (req, res) => {
   const b = req.body || {};
@@ -630,34 +584,11 @@ app.patch("/api/admin/registrations/:id", requireAdmin, async (req, res) => {
 });
 
 app.delete("/api/admin/registrations/:id", requireAdmin, async (req, res) => {
-  const r = await db.prepare("SELECT id, file_path FROM registrations WHERE id = ?").get(Number(req.params.id));
+  const r = await db.prepare("SELECT id FROM registrations WHERE id = ?").get(Number(req.params.id));
   if (!r) return res.status(404).json({ ok: false, error: "not_found" });
-  if (r.file_path) fs.rm(path.join(UPLOAD_DIR, path.basename(r.file_path)), { force: true }, () => {});
   await db.prepare("DELETE FROM scores WHERE registration_id = ?").run(r.id);
   await db.prepare("DELETE FROM registrations WHERE id = ?").run(r.id);
   res.json({ ok: true });
-});
-
-const FILE_TYPES = {
-  ".pdf": "application/pdf",
-  ".ppt": "application/vnd.ms-powerpoint",
-  ".pptx": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-};
-
-function sendProjectFile(res, row, inline) {
-  const filePath = path.join(UPLOAD_DIR, path.basename(row.file_path));
-  if (!row.file_path || !fs.existsSync(filePath)) return res.status(404).json({ ok: false, error: "not_found" });
-  const name = decodeName(row.file_original) || "dossier";
-  const ext = path.extname(name).toLowerCase();
-  res.setHeader("Content-Type", FILE_TYPES[ext] || "application/octet-stream");
-  res.setHeader("Content-Disposition", `${inline && ext === ".pdf" ? "inline" : "attachment"}; filename*=UTF-8''${encodeURIComponent(`${row.ref}_${name}`)}`);
-  res.sendFile(filePath);
-}
-
-app.get("/api/admin/registrations/:id/file", requireAdmin, async (req, res) => {
-  const r = await db.prepare("SELECT ref, file_path, file_original FROM registrations WHERE id = ?").get(Number(req.params.id));
-  if (!r) return res.status(404).json({ ok: false, error: "not_found" });
-  sendProjectFile(res, r, req.query.inline === "1");
 });
 
 const CHALLENGE_TITLES = {
