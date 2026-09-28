@@ -3981,7 +3981,7 @@ a.org:hover {
 @media (max-width: 900px) {
   :root {
     --ribbon-h: 48px;
-    --header-h: 70px;
+    --header-h: 88px;
   }
   .ribbon {
     font-size: 0.72rem;
@@ -4002,12 +4002,12 @@ a.org:hover {
     display: none;
   }
   .brand__uca {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
   }
   .brand__sic {
-    width: 52px;
-    height: 52px;
+    width: 76px;
+    height: 76px;
   }
 }
 
@@ -4084,10 +4084,10 @@ a.org:hover {
   }
   :root {
     --ribbon-h: 54px;
-    --header-h: 64px;
+    --header-h: 84px;
   }
   body.is-scrolled .header {
-    height: 60px;
+    height: 80px;
   }
   .hero__tagline {
     white-space: normal;
@@ -4115,17 +4115,17 @@ a.org:hover {
     min-width: 0;
     max-width: none;
     gap: 8px;
-    overflow: hidden;
+    overflow: visible;
   }
   .brand__uca {
-    width: 40px;
-    height: 40px;
+    width: 46px;
+    height: 46px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
   }
   .brand__sic {
-    width: 46px;
-    height: 46px;
+    width: 72px;
+    height: 72px;
   }
   .brand__divider {
     display: none;
