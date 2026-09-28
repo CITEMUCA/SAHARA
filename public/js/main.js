@@ -137,6 +137,7 @@
     $("#prizeMain").innerHTML = SIC.dict()
       .prizesMain.map(
         (p) => `<article class="prize prize--${p.track.toLowerCase()} reveal">
+          <div class="prize__trophy" aria-hidden="true"><i class="fa-solid fa-trophy"></i></div>
           <span class="prize__track"><i class="fa-solid ${icons[p.track]}" aria-hidden="true"></i> ${esc(SIC.t("prizes.grand.label"))} ${esc(p.track)}</span>
           <h3>${esc(p.title)}</h3>
           <p>${esc(p.text)}</p>

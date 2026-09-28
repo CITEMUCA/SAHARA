@@ -16,11 +16,14 @@ window.SIC_CONFIG = {
    * Exemple : { name: "Partenaire", logo: "/assets/partners/partenaire.png", url: "https://…", tier: "gold" }
    */
   partners: [
+    { name: "Chambre de Commerce, d'Industrie et de Services de la région Laâyoune-Sakia El Hamra", logo: "/assets/partners/logo-ccis-laayoune-sakia-el-hamra.png", url: "", tier: "institutional" },
+    { name: "Chambre de Commerce, d'Industrie et de Services de la région Dakhla-Oued Eddahab", logo: "/assets/partners/ccis-dakhla.png", url: "", tier: "institutional" },
     { name: "Centre Régional d'Investissement Marrakech-Safi", logo: "/assets/partners/cri.jpeg", url: "https://www.cri-marrakech.ma/", tier: "institutional" },
+    { name: "Banque Populaire", logo: "/assets/partners/bp.png", url: "https://www.groupebcp.com/", tier: "institutional" },
     { name: "CGEM", logo: "/assets/partners/cgem.webp", url: "https://www.cgem.ma/", tier: "institutional" },
     { name: "Agence de Développement Social", logo: "/assets/partners/ads.jpeg", url: "https://www.ads.ma/", tier: "institutional" },
     { name: "Conseil Régional du Tourisme de Marrakech", logo: "/assets/partners/crt-marrakech.webp", url: "https://www.visitmarrakech.com/", tier: "institutional" },
-    { name: "Banque Populaire", logo: "/assets/partners/bp.png", url: "https://www.groupebcp.com/", tier: "institutional" },
+    { name: "LIREMD", logo: "/assets/partners/liremd.webp", url: "", tier: "institutional" },
   ],
 
   partnerSlots: 0,

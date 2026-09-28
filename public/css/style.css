@@ -2091,18 +2091,23 @@ body.is-scrolled .occasion--banner {
   gap: 22px;
 }
 .prize {
-  --p: var(--gold-2);
-  padding: 28px;
+  --p: var(--gold);
+  position: relative;
+  text-align: center;
+  padding: clamp(28px, 4vw, 42px) 24px;
   border-radius: var(--radius-lg);
-  background: #fff;
-  border: 1px solid var(--line);
-  border-top: 5px solid var(--p);
-  box-shadow: var(--shadow-sm);
+  color: #fff;
+  background:
+    radial-gradient(420px 220px at 50% 0%, color-mix(in srgb, var(--p) 38%, transparent), transparent 72%),
+    linear-gradient(160deg, var(--night-2), var(--night));
+  border: 1px solid color-mix(in srgb, var(--p) 48%, transparent);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
   transition: transform 0.3s var(--ease), box-shadow 0.3s;
 }
 .prize:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow);
+  transform: translateY(-6px);
+  box-shadow: 0 28px 60px -24px color-mix(in srgb, var(--p) 55%, transparent);
 }
 .prize--lab {
   --p: var(--ocean);
@@ -2110,25 +2115,36 @@ body.is-scrolled .occasion--banner {
 .prize--scale {
   --p: var(--copper);
 }
+.prize__trophy {
+  margin: 0 auto 8px;
+  font-size: 3.2rem;
+  line-height: 1;
+  color: var(--p);
+  filter: drop-shadow(0 0 18px color-mix(in srgb, var(--p) 60%, transparent));
+}
 .prize__track {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  font-size: 0.85rem;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--p);
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 .prize__track i {
-  font-size: 1.5rem;
+  font-size: 1rem;
+  line-height: 1;
+  filter: none;
 }
 .prize h3 {
-  font-size: 1.3rem;
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  color: #fff;
 }
 .prize p {
-  color: var(--ink-2);
+  color: #c9cfe6;
   margin: 0;
 }
 .prize-extra {
