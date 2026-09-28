@@ -3808,6 +3808,9 @@ a.org:hover {
 }
 .story p {
   color: var(--ink-2);
+  text-align: justify;
+  text-align-last: start;
+  hyphens: auto;
 }
 #rulesModal .modal__inner {
   padding: 40px;
