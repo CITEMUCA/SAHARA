@@ -137,7 +137,7 @@
     $("#prizeMain").innerHTML = SIC.dict()
       .prizesMain.map(
         (p) => `<article class="prize prize--${p.track.toLowerCase()} reveal">
-          <span class="prize__track"><i class="fa-solid ${icons[p.track]}" aria-hidden="true"></i> Prix ${p.track}</span>
+          <span class="prize__track"><i class="fa-solid ${icons[p.track]}" aria-hidden="true"></i> ${esc(SIC.t("prizes.grand.label"))} ${esc(p.track)}</span>
           <h3>${esc(p.title)}</h3>
           <p>${esc(p.text)}</p>
         </article>`
@@ -171,6 +171,7 @@
           <div class="tl__card">
             <div class="tl__badges"><span class="badge">${esc(p.time)}</span><span class="badge badge--accent">${esc(p.tag)}</span></div>
             <h3>${esc(p.title)}</h3>
+            ${p.place ? `<p class="tl__place"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> ${esc(p.place)}</p>` : ""}
             ${p.text ? `<p>${esc(p.text)}</p>` : ""}
             <ul>${p.items.map((it) => `<li>${esc(it)}</li>`).join("")}</ul>
             ${p.mode ? `<p class="tl__meta"><b>${esc(SIC.t("programme.mode"))} :</b> ${esc(p.mode)}</p>` : ""}

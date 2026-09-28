@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Reem+Kufi:wght@500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="/css/style.css?v=story33">
+  <link rel="stylesheet" href="/css/style.css?v=logo38">
 </head>
 <body>
   <a class="skip-link" href="#main">Aller au contenu</a>
@@ -36,7 +36,7 @@
       <a class="brand" href="#top" aria-label="Moroccan Sahara Innovation Challenge 2026">
         <img class="brand__uca" src="/assets/logos/uca.png" alt="Université Cadi Ayyad" width="72" height="72">
         <span class="brand__divider" aria-hidden="true"></span>
-        <img class="brand__sic" src="/assets/brand/logo-sic.png" alt="" width="44" height="44">
+        <img class="brand__sic" src="/assets/brand/logo-sic.png" alt="" width="72" height="72">
         <span class="brand__text">
           <em>Moroccan</em>
           <strong>SAHARA</strong>
@@ -162,7 +162,7 @@
           <div class="hero-stats">
             <div class="stat"><strong data-count="6">0</strong><span data-i18n="stat.challenges"></span></div>
             <div class="stat"><strong data-count="3">0</strong><span data-i18n="stat.tracks"></span></div>
-            <div class="stat"><strong data-count="11">0</strong><span data-i18n="stat.prizes"></span></div>
+            <div class="stat"><strong data-count="10">0</strong><span data-i18n="stat.prizes"></span></div>
             <div class="stat"><strong data-count="3">0</strong><span data-i18n="stat.year"></span></div>
           </div>
         </div>
@@ -252,12 +252,6 @@
           <h2 class="section__title" data-i18n="prizes.title"></h2>
           <p class="section__sub" data-i18n="prizes.sub"></p>
         </header>
-        <article class="grand reveal">
-          <div class="grand__badge"><i class="fa-solid fa-trophy"></i></div>
-          <p class="grand__label" data-i18n="prizes.grand.label"></p>
-          <h3 data-i18n="prizes.grand.title"></h3>
-          <p data-i18n="prizes.grand.text"></p>
-        </article>
         <div class="prize-grid" id="prizeMain"></div>
         <div class="prize-extra">
           <div class="thematic reveal">
@@ -441,6 +435,7 @@
                 <div class="field">
                   <label><span data-i18n="f.study_level"></span> *</label>
                   <div class="pills">
+                    <label class="pill"><input type="radio" name="study_level" value="bac2"><span data-i18n="f.level.bac2"></span></label>
                     <label class="pill"><input type="radio" name="study_level" value="licence"><span data-i18n="f.level.licence"></span></label>
                     <label class="pill"><input type="radio" name="study_level" value="master"><span data-i18n="f.level.master"></span></label>
                     <label class="pill"><input type="radio" name="study_level" value="doctorate"><span data-i18n="f.level.doctorate"></span></label>
@@ -587,7 +582,6 @@
       <p data-i18n="occasion.p1"></p>
       <p data-i18n="occasion.p2"></p>
       <p data-i18n="occasion.p3"></p>
-      <p data-i18n="occasion.p4"></p>
     </div>
   </dialog>
 
@@ -610,10 +604,10 @@
   <button class="to-top" id="toTop" type="button" aria-label="Haut de page"><i class="fa-solid fa-arrow-up"></i></button>
 
   <script src="/assets/map/morocco-map.js?v=form4"></script>
-  <script src="/js/i18n.js?v=form10"></script>
-  <script src="/js/config.js?v=form4"></script>
-  <script src="/js/main.js?v=form7"></script>
+  <script src="/js/i18n.js?v=bac2"></script>
+  <script src="/js/config.js?v=bp"></script>
+  <script src="/js/main.js?v=places36"></script>
   <script src="/js/map.js?v=form4"></script>
-  <script src="/js/form.js?v=form9"></script>
+  <script src="/js/form.js?v=bac2"></script>
 </body>
 </html>

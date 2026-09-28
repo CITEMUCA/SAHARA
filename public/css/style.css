@@ -43,7 +43,7 @@
   --shadow-lg: 0 40px 90px -30px rgba(10, 17, 40, 0.45);
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --ribbon-h: 34px;
-  --header-h: 76px;
+  --header-h: 100px;
 
   --zellige: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23B8652F' stroke-opacity='.09' stroke-width='1'%3E%3Crect x='21' y='21' width='30' height='30'/%3E%3Crect x='21' y='21' width='30' height='30' transform='rotate(45 36 36)'/%3E%3Ccircle cx='36' cy='36' r='7'/%3E%3Cpath d='M0 0L14 14M72 0L58 14M0 72L14 58M72 72L58 58'/%3E%3C/g%3E%3C/svg%3E");
 }
@@ -403,7 +403,7 @@ body.is-scrolled .ribbon {
 }
 body.is-scrolled .header {
   top: 0;
-  height: 66px;
+  height: 92px;
   background: rgba(253, 250, 244, 0.86);
   backdrop-filter: saturate(1.4) blur(16px);
   box-shadow: 0 1px 0 var(--line), 0 10px 30px -18px rgba(10, 17, 40, 0.25);
@@ -444,8 +444,8 @@ body.is-scrolled .header {
   flex-shrink: 0;
 }
 .brand__sic {
-  width: clamp(34px, 5vw, 48px);
-  height: clamp(34px, 5vw, 48px);
+  width: clamp(64px, 8vw, 92px);
+  height: clamp(64px, 8vw, 92px);
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -2420,9 +2420,22 @@ body.is-scrolled .occasion--banner {
 }
 .tl__badges {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 10px;
-  flex-wrap: wrap;
+}
+.tl__place {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0 0 12px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.tl__place i {
+  margin-top: 0.2em;
+  color: var(--copper);
 }
 .badge {
   font-size: 0.74rem;
@@ -3809,8 +3822,9 @@ a.org:hover {
 .story p {
   color: var(--ink-2);
   text-align: justify;
-  text-align-last: start;
-  hyphens: auto;
+  hyphens: none;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
 }
 #rulesModal .modal__inner {
   padding: 40px;
@@ -3992,8 +4006,8 @@ a.org:hover {
     height: 44px;
   }
   .brand__sic {
-    width: 36px;
-    height: 36px;
+    width: 52px;
+    height: 52px;
   }
 }
 
@@ -4110,8 +4124,8 @@ a.org:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
   }
   .brand__sic {
-    width: 34px;
-    height: 34px;
+    width: 46px;
+    height: 46px;
   }
   .brand__divider {
     display: none;

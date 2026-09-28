@@ -225,6 +225,7 @@
             <div class="field">
               <label>${esc(SIC.t("f.study_level"))} *</label>
               <div class="pills">
+                ${level("bac2", SIC.t("f.level.bac2"))}
                 ${level("licence", SIC.t("f.level.licence"))}
                 ${level("master", SIC.t("f.level.master"))}
                 ${level("doctorate", SIC.t("f.level.doctorate"))}
